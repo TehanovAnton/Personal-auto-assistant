@@ -61,6 +61,7 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     ast (2.4.2)
+    bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.3)
       msgpack (~> 1.0)
@@ -68,6 +69,12 @@ GEM
     byebug (11.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     erubi (1.10.0)
     ffi (1.15.4)
     figaro (1.2.0)
@@ -94,16 +101,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     orm_adapter (0.5.0)
-=======
     parallel (1.20.1)
     parser (3.0.2.0)
       ast (~> 2.4.1)
->>>>>>> Instal gem rubcocop and rails cops
->>>>>>> dccc1bf... Instal gem rubcocop and rails cops
     pg (1.2.3)
     puma (5.5.2)
       nio4r (~> 2.0)
@@ -146,14 +147,10 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+    regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-=======
-    regexp_parser (2.1.1)
     rexml (3.2.5)
     rubocop (1.22.3)
       parallel (~> 1.10)
@@ -171,8 +168,6 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
->>>>>>> Instal gem rubcocop and rails cops
->>>>>>> dccc1bf... Instal gem rubcocop and rails cops
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -198,15 +193,9 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+    unicode-display_width (2.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-=======
-    unicode-display_width (2.0.0)
->>>>>>> Instal gem rubcocop and rails cops
->>>>>>> dccc1bf... Instal gem rubcocop and rails cops
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -228,6 +217,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  devise (~> 4.8, >= 4.8.1)
   figaro (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)

@@ -5,4 +5,4 @@ Style/Documentation:
 
 Rails:
   Exclude:
-    - config/*/**
+    - 'config/**/*'
