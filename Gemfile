@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'omniauth-google-oauth2', '~> 1.0'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -36,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'figaro', '~> 1.2'
   gem 'rubocop-rails', require: false
+  gem 'pry', '~> 0.14.1'
 end
 
 group :development do
