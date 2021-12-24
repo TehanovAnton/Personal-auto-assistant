@@ -39,6 +39,8 @@ group :development, :test do
   gem 'figaro', '~> 1.2'
   gem 'rubocop-rails', require: false
   gem 'pry', '~> 0.14.1'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
 
 group :development do
