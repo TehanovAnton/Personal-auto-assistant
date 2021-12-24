@@ -35,8 +35,6 @@ class User < ApplicationRecord
       )
     end
 
-    binding.pry
-
     user
   end
 end
