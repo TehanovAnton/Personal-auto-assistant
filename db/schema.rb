@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2021_12_17_150125) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
+
   create_table "guests", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
