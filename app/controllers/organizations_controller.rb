@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: %i[show edit update destroy]
+  before_action :set_cities, only: %i[new create edit update]
 
   # GET /organizations or /organizations.json
   def index
@@ -13,7 +14,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/new
   def new
     @organization = Organization.new
-    @cities = City.all
   end
 
   # GET /organizations/1/edit
@@ -22,11 +22,11 @@ class OrganizationsController < ApplicationController
 
   # POST /organizations or /organizations.json
   def create
-    organization = Organization.new(organization_params)
-    saved = service.save(organization: organization, city_ids: city_ids)
+    @organization = Organization.new(organization_params)
+    saved = service.save(organization: @organization, city_ids: city_ids)
 
-    redirect_to organization_path(organization), notice: 'Organization was successfully created.' if saved
-    render :edit, status: :unprocessable_entity unless saved
+    redirect_to organization_path(@organization), notice: 'Organization was successfully created.' if saved
+    render :new, status: :unprocessable_entity unless saved
   end
 
   # PATCH/PUT /organizations/1 or /organizations/1.json
@@ -60,6 +60,10 @@ class OrganizationsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_organization
     @organization = Organization.find(params[:id])
+  end
+
+  def set_cities
+    @cities = City.all
   end
 
   # Only allow a list of trusted parameters through.
