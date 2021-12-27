@@ -41,6 +41,7 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem 'faker', '~> 2.19'
 end
 
 group :development do
