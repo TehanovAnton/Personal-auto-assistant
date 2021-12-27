@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 2021_12_26_103044) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.string "model"
+    t.integer "year_production"
+    t.integer "engine_volume"
+    t.integer "mileage"
+    t.string "body_type"
+    t.string "fuel_type"
+    t.string "transmission_type"
+    t.string "maker"
+    t.string "vin"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vin"], name: "index_cars_on_vin", unique: true
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
