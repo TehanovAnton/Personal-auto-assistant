@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-nav'
   gem 'faker', '~> 2.19'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 group :development do
