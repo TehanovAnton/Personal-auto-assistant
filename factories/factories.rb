@@ -7,8 +7,24 @@ FactoryBot.define do
     mileage { Faker::Vehicle.mileage }
     body_type { Faker::Vehicle.car_type }
     fuel_type { ['gas', 'petrol', 'electricity'].sample }
-    transmission_type { ['automatic', 'mechanic'].sample  }
+    transmission_type { ['automatic', 'mechanic'].sample }
     maker { Faker::Vehicle.make }
     vin { Faker::Vehicle.vin }
   end
+
+  trait :with_user do
+    user_id { FactoryBot.create(:user).id }
+  end
+end
+
+FactoryBot.define do
+  factory :user do
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    phone_number { Faker::PhoneNumber.cell_phone  }
+    email { "#{first_name}#{last_name}@gmail.com" }
+    password { 'ewqqwe' }
+  end
+
+  after(:create) { |user| user.confirm if user.is_a? User }
 end
