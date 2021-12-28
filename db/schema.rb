@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_103044) do
+ActiveRecord::Schema.define(version: 2021_12_28_180208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_103044) do
     t.string "vin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
@@ -95,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_103044) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "users"
   add_foreign_key "cities_organizations", "cities"
   add_foreign_key "cities_organizations", "organizations"
 end

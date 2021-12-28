@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :car do
+    user_id { User.last.id }
     model { Faker::Vehicle.model }
     year_production { Faker::Number.between(from: 2000, to: 2015) }
     engine_volume { Faker::Number.between(from: 1, to: 3.5).floor(1) }
