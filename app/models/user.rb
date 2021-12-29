@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.where(email: data['email']).first
+    user = User.find_by(email: data['email'])
 
     # Uncomment the section below if you want users to be created if they don't exist
 
