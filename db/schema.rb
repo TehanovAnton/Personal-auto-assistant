@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2021_12_31_104737) do
 
-ActiveRecord::Schema.define(version: 2021_12_17_150125) do
-  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -24,10 +26,12 @@ ActiveRecord::Schema.define(version: 2021_12_17_150125) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_cities_on_name", unique: true
   end
-  
-  create_table 'admins', force: :cascade do |t|
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_documents_on_name", unique: true
   end
 
   create_table "guests", force: :cascade do |t|
