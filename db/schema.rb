@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_172719) do
+ActiveRecord::Schema.define(version: 2021_12_29_173008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2021_12_29_172719) do
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "car_parts", id: false, force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "part_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id", "part_id"], name: "index_car_parts_on_car_id_and_part_id", unique: true
   end
 
   create_table "cars", force: :cascade do |t|
@@ -102,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_12_29_172719) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cities_organizations", "cities"
-  add_foreign_key "cities_organizations", "organizations"
+  add_foreign_key "car_parts", "cars", on_delete: :cascade
+  add_foreign_key "car_parts", "parts", on_delete: :cascade
+  add_foreign_key "cities_organizations", "cities", on_delete: :cascade
+  add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
 end
