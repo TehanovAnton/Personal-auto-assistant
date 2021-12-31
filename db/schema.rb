@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_161011) do
+ActiveRecord::Schema.define(version: 2021_12_31_161727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_161011) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_cities_on_name", unique: true
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_161011) do
     t.integer "organization_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.string "content", null: false
-    t.integer "user_id", null: false
-    t.bigint "comment_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_comments_on_comment_id"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -58,6 +49,14 @@ ActiveRecord::Schema.define(version: 2021_12_31_161011) do
     t.index ["adress"], name: "index_organizations_on_adress", unique: true
     t.index ["email"], name: "index_organizations_on_email", unique: true
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
+  end
+
+  create_table "organizations_services", force: :cascade do |t|
+    t.integer "organization_id", null: false
+    t.integer "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id", "service_id"], name: "index_organizations_services_on_organization_id_and_service_id", unique: true
   end
 
   create_table "service_owners", force: :cascade do |t|
@@ -98,6 +97,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_161011) do
 
   add_foreign_key "cities_organizations", "cities", on_delete: :cascade
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
-  add_foreign_key "comments", "comments", on_delete: :cascade
-  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "organizations_services", "organizations", on_delete: :cascade
+  add_foreign_key "organizations_services", "services", on_delete: :cascade
 end
