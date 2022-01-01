@@ -5,7 +5,7 @@ class CreateServiceWorks < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    
+
     add_index :service_works, :name, unique: true
   end
 end
