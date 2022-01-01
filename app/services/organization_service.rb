@@ -1,5 +1,5 @@
 class OrganizationService
-  def save_organization_and_cities_organizations(organization: Organization.new,
+  def save_organization_and_cities_organization(organization: Organization.new,
                                                  city_ids: [])
     return false unless organization.valid?
 

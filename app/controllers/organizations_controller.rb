@@ -18,7 +18,8 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
-    saved = service.save(organization: @organization, city_ids: city_ids)
+    saved = service.save_organization_and_cities_organization(organization: @organization,
+                                                               city_ids: city_ids)
 
     redirect_to organization_path(@organization), notice: 'Organization was successfully created.' if saved
     render :new, status: :unprocessable_entity unless saved
