@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :cars
+  has_many :cars, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -20,21 +20,20 @@ class User < ApplicationRecord
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.find_by(email: data['email'])
+    user || User.create_user(data, access_token)
+  end
 
-    unless user
-      password = Devise.friendly_token[0, 20]
+  def self.create_user(data, access_token)
+    password = Devise.friendly_token[0, 20]
 
-      user = User.create(
-        first_name: data['first_name'],
-        last_name: data['last_name'],
-        email: data['email'],
-        phone_number: '1234',
-        password: password,
-        provider: access_token.provider,
-        uid: access_token.uid
-      )
-    end
-
-    user
+    User.create(
+      first_name: data['first_name'],
+      last_name: data['last_name'],
+      email: data['email'],
+      phone_number: '1234',
+      password: password,
+      provider: access_token.provider,
+      uid: access_token.uid
+    )
   end
 end
