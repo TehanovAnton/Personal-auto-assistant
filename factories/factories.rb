@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :car do
     user_id { User.last.id }
@@ -6,8 +8,8 @@ FactoryBot.define do
     engine_volume { Faker::Number.between(from: 1, to: 3.5).floor(1) }
     mileage { Faker::Vehicle.mileage }
     body_type { Faker::Vehicle.car_type }
-    fuel_type { ['gas', 'petrol', 'electricity'].sample }
-    transmission_type { ['automatic', 'mechanic'].sample }
+    fuel_type { %w[gas petrol electricity].sample }
+    transmission_type { %w[automatic mechanic].sample }
     maker { Faker::Vehicle.make }
     vin { Faker::Vehicle.vin }
   end
