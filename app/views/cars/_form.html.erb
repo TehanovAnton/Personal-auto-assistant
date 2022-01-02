@@ -23,9 +23,9 @@
   
   <%= form.input :body_type, required: true %>
   
-  <%= form.input :fuel_type, required: true %>
+  <%= form.input :fuel_type, collection: fuel_types, value_method: :first, include_blank: false %>
   
-  <%= form.input :transmission_type, required: true %>
+  <%= form.input :transmission_type, collection: transmission_types, value_method: :first, include_blank: false %>
   
   <%= form.input :maker, required: true %>
   

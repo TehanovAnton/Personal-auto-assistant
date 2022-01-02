@@ -2,6 +2,7 @@
 
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
+  before_action :fuel_transmission_types, only: %i[new edit]
 
   def index
     @cars = Car.all
@@ -58,5 +59,10 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
                                 :transmission_type, :maker, :vin, :user_id)
+  end
+
+  def fuel_transmission_types
+    @fuel_types = Car.fuel_types
+    @transmission_types = Car.transmission_types
   end
 end
