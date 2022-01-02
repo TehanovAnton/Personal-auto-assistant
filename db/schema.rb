@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_105424) do
+ActiveRecord::Schema.define(version: 2022_01_02_162859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(version: 2022_01_02_105424) do
   create_table "car_owner_documents", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "document_id", null: false
-    t.date "date_issue", null: false
+    t.date "issue_date", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "expire_date", null: false
     t.index ["user_id", "document_id"], name: "index_car_owner_documents_on_user_id_and_document_id", unique: true
   end
 
