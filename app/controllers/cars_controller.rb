@@ -3,23 +3,18 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
 
-  # GET /cars or /cars.json
   def index
     @cars = Car.all
   end
 
-  # GET /cars/1 or /cars/1.json
   def show; end
 
-  # GET /cars/new
   def new
-    @car = Car.new
+    @car = FactoryBot.build(:car)
   end
 
-  # GET /cars/1/edit
   def edit; end
 
-  # POST /cars or /cars.json
   def create
     @car = Car.new(car_params)
 
@@ -34,7 +29,6 @@ class CarsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cars/1 or /cars/1.json
   def update
     respond_to do |format|
       if @car.update(car_params)
@@ -47,7 +41,6 @@ class CarsController < ApplicationController
     end
   end
 
-  # DELETE /cars/1 or /cars/1.json
   def destroy
     @car.destroy
     respond_to do |format|
@@ -58,12 +51,10 @@ class CarsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_car
     @car = Car.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def car_params
     params.require(:car).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
                                 :transmission_type, :maker, :vin, :user_id)
