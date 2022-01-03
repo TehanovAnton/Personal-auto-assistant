@@ -6,8 +6,8 @@ class CreateCars < ActiveRecord::Migration[6.1]
       t.integer :engine_volume
       t.integer :mileage
       t.string :body_type
-      t.string :fuel_type
-      t.string :transmission_type
+      t.integer :fuel_type
+      t.integer :transmission_type
       t.string :maker
       t.string :vin
 
