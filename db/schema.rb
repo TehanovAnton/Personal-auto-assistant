@@ -30,18 +30,18 @@ ActiveRecord::Schema.define(version: 2021_12_29_160418) do
   end
 
   create_table "cars", force: :cascade do |t|
-    t.string "model"
-    t.integer "year_production"
-    t.integer "engine_volume"
-    t.integer "mileage"
-    t.string "body_type"
-    t.integer "fuel_type"
-    t.integer "transmission_type"
-    t.string "maker"
-    t.string "vin"
+    t.integer "user_id"
+    t.string "model", default: "a12", null: false
+    t.integer "year_production", default: 2000, null: false
+    t.integer "engine_volume", default: 1, null: false
+    t.integer "mileage", default: 0, null: false
+    t.string "body_type", default: "sedan", null: false
+    t.integer "fuel_type", default: 0, null: false
+    t.integer "transmission_type", default: 0, null: false
+    t.string "maker", default: "bmw", null: false
+    t.string "vin", default: "123asdfaase123", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
