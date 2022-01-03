@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'simple_form', '~> 5.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
