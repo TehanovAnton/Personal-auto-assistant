@@ -1,6 +1,6 @@
 class CreateCarConsumableValues < ActiveRecord::Migration[6.1]
   def change
-    create_table :car_consumable_values, id: false do |t|
+    create_table :car_consumable_values do |t|
       t.integer :car_id, null: false
       t.integer :consumable_id, null: false
       t.integer :value, null: false, default: 0

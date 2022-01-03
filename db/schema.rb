@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_160418) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "car_consumable_values", id: false, force: :cascade do |t|
+  create_table "car_consumable_values", force: :cascade do |t|
     t.integer "car_id", null: false
     t.integer "consumable_id", null: false
     t.integer "value", default: 0, null: false
