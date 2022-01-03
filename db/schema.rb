@@ -12,8 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2021_12_17_150125) do
+ActiveRecord::Schema.define(version: 2021_12_28_180208) do
   
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +29,51 @@ ActiveRecord::Schema.define(version: 2021_12_17_150125) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
+  create_table "cars", force: :cascade do |t|
+    t.string "model"
+    t.integer "year_production"
+    t.integer "engine_volume"
+    t.integer "mileage"
+    t.string "body_type"
+    t.string "fuel_type"
+    t.string "transmission_type"
+    t.string "maker"
+    t.string "vin"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["vin"], name: "index_cars_on_vin", unique: true
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
+
+  create_table "cities_organizations", id: false, force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "guests", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.string "adress", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["adress"], name: "index_organizations_on_adress", unique: true
+    t.index ["email"], name: "index_organizations_on_email", unique: true
+    t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
   end
 
   create_table "service_owners", force: :cascade do |t|
@@ -64,4 +105,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_150125) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "users", on_delete: :cascade
+  add_foreign_key "cities_organizations", "cities"
+  add_foreign_key "cities_organizations", "organizations"
 end
