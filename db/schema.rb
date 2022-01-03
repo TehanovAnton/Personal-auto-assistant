@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_160418) do
   create_table "car_consumable_values", id: false, force: :cascade do |t|
     t.integer "car_id", null: false
     t.integer "consumable_id", null: false
-    t.integer "value", null: false
+    t.integer "value", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_id", "consumable_id"], name: "index_car_consumable_values_on_car_id_and_consumable_id", unique: true

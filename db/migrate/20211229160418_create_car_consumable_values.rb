@@ -3,7 +3,7 @@ class CreateCarConsumableValues < ActiveRecord::Migration[6.1]
     create_table :car_consumable_values, id: false do |t|
       t.integer :car_id, null: false
       t.integer :consumable_id, null: false
-      t.integer :value, null: false
+      t.integer :value, null: false, default: 0
 
       t.timestamps
     end
