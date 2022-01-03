@@ -3,6 +3,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
   before_action :fuel_transmission_types, only: %i[new edit]
+  before_action :documents, only: %i[new edit]
 
   def index
     @cars = Car.all
@@ -11,7 +12,7 @@ class CarsController < ApplicationController
   def show; end
 
   def new
-    @car = FactoryBot.build(:car)
+    @car_form = CarForm.new(car: FactoryBot.build(:car))
   end
 
   def edit; end
@@ -19,14 +20,10 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
 
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
-        format.json { render :show, status: :created, location: @car }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.save && service.create_documents(documents: documents_params[:documents], user_id: documents_params[:user_id])
+      redirect_to @car, notice: 'Car was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -57,12 +54,24 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
-                                :transmission_type, :maker, :vin, :user_id)
+    params.require(:car_form).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
+                                     :transmission_type, :maker, :vin, :user_id)
+  end
+
+  def documents_params
+    params.require(:car_form).permit(:user_id, documents: {})
   end
 
   def fuel_transmission_types
     @fuel_types = Car.fuel_types
     @transmission_types = Car.transmission_types
+  end
+
+  def documents
+    @documents = Document.names
+  end
+
+  def service
+    @service ||= UserService.new
   end
 end
