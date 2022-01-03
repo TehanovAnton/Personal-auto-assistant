@@ -39,8 +39,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'figaro', '~> 1.2'
   gem 'pry', '~> 0.14.1'
-  gem 'pry-remote'
   gem 'pry-nav'
+  gem 'pry-remote'
   gem 'rubocop-rails', require: false
 end
 

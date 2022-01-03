@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrganizationService
   attr_accessor :organization, :cities
 
