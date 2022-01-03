@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_160418) do
     t.string "vin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
@@ -113,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_12_29_160418) do
 
   add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
   add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
+  add_foreign_key "cars", "users", on_delete: :cascade
   add_foreign_key "cities_organizations", "cities"
   add_foreign_key "cities_organizations", "organizations"
 end
