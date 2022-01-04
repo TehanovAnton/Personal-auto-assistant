@@ -41,6 +41,8 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
+  gem 'faker', '~> 2.19'
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'rubocop-rails', require: false
 end
 

@@ -10,14 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_103044) do
 
+ActiveRecord::Schema.define(version: 2021_12_31_141920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content", null: false
+    t.integer "user_id", null: false
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comments_on_comment_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -32,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_103044) do
     t.string "vin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
@@ -95,6 +112,10 @@ ActiveRecord::Schema.define(version: 2021_12_26_103044) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "comments", "comments", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "cars", "users", on_delete: :cascade
   add_foreign_key "cities_organizations", "cities", on_delete: :cascade
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
 end
