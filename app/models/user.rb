@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :car_owner_documents, dependent: :destroy
-  has_many :documents, through: :car_owner_documents
-
-  has_many :cars, dependent: :destroy
+  has_many :cars_owners_documents, dependent: :destroy
+  has_many :documents, through: :cars_owners_documents
 
   has_many :comments, dependent: :destroy
+
+  has_many :cars, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -29,6 +29,14 @@ class User < ApplicationRecord
     return create_user(data) unless user
 
     user
+  end
+
+  def document_issue_date(id:)
+    cars_owners_documents.find_by(document_id: id).issue_date
+  end
+
+  def set_document_issue_date(id:, value:)
+    cars_owners_documents.find_by(document_id: id).update(issue_date: value)
   end
 
   private
