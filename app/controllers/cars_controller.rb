@@ -20,7 +20,8 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
 
-    if @car.save && service.create_documents(documents: documents_params[:documents], user_id: documents_params[:user_id])
+    if @car.save && service.create_documents(documents: documents_params[:documents],
+                                             user_id: documents_params[:user_id])
       redirect_to @car, notice: 'Car was successfully created.'
     else
       render :new, status: :unprocessable_entity
