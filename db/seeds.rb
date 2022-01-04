@@ -9,3 +9,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 %w[Minsk Brest Mogilev].each { |name| City.create(name: name) }
+
+# Car wil have consumables 
+FactoryBot.create(:user_with_car)
