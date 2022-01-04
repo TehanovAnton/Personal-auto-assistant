@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
-  create_table "cars_owners_documents", id: false, force: :cascade do |t|
+  create_table "cars_owners_documents", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "document_id", null: false
-    t.date "date_issue", null: false
+    t.date "issue_date", default: "2021-01-01", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "document_id"], name: "index_cars_owners_documents_on_user_id_and_document_id", unique: true
