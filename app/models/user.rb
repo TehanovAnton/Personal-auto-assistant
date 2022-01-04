@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :car_owner_documents, dependent: :destroy
   has_many :documents, through: :car_owner_documents
 
+  has_many :comments, dependent: :destroy
+  has_many :cars, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,24 +24,27 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.find_by(email: data['email'])
-
-    # Uncomment the section below if you want users to be created if they don't exist
-
-    unless user
-      password = Devise.friendly_token[0, 20]
-
-      user = User.create(
-        first_name: data['first_name'],
-        last_name: data['last_name'],
-        email: data['email'],
-        phone_number: '1234',
-        password: password,
-        provider: access_token.provider,
-        uid: access_token.uid
-      )
-    end
+    user = user_by_email(data['email'])
+    return create_user(data) unless user
 
     user
+  end
+
+  def create_user(data)
+    password = Devise.friendly_token[0, 20]
+
+    User.create(
+      first_name: data['first_name'],
+      last_name: data['last_name'],
+      email: data['email'],
+      phone_number: '1234',
+      password: password,
+      provider: access_token.provider,
+      uid: access_token.uid
+    )
+  end
+
+  def user_by_email(email)
+    User.find_by(email: email)
   end
 end

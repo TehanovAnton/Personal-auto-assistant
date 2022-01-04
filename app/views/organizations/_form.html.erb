@@ -1,0 +1,22 @@
+<%= simple_form_for(organization) do |form| %>
+  <% if organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+
+      <ul>
+        <% organization.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.input :email %>
+  <%= form.input :phone_number %>
+  <%= form.input :adress %>
+  <%= form.input :name %>
+
+  <%= form.input :city_ids, label: 'Cities', as: :check_boxes, collection: cities, label_method: :name, value_method: :id %>
+
+  <%= form.button :submit %>
+<% end %>
