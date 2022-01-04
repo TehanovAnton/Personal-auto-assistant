@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "name", null: false
+    t.integer "name", default: 0, null: false
     t.integer "term_of_validity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
