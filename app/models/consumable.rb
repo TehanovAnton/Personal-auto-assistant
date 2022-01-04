@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Consumable < ApplicationRecord
   has_many :car_consumable_values, dependent: :destroy
   has_many :cars, through: :car_consumable_values
