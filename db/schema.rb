@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
+  create_table "cars_parts", id: false, force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "part_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id", "part_id"], name: "index_cars_parts_on_car_id_and_part_id", unique: true
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -92,6 +100,13 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
   end
 
+  create_table "parts", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_parts_on_name", unique: true
+  end
+
   create_table "service_owners", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -124,6 +139,8 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
   add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
   add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
   add_foreign_key "cars", "users", on_delete: :cascade
+  add_foreign_key "cars_parts", "cars", on_delete: :cascade
+  add_foreign_key "cars_parts", "parts", on_delete: :cascade
   add_foreign_key "cities_organizations", "cities", on_delete: :cascade
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "comments", on_delete: :cascade
