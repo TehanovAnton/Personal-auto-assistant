@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2021_12_31_105140) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "car_owner_documents", id: false, force: :cascade do |t|
+  create_table "cars_owners_documents", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "document_id", null: false
     t.date "date_issue", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "document_id"], name: "index_car_owner_documents_on_user_id_and_document_id", unique: true
+    t.index ["user_id", "document_id"], name: "index_cars_owners_documents_on_user_id_and_document_id", unique: true
   end
 
   create_table "cities", force: :cascade do |t|
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_105140) do
 
   create_table "documents", force: :cascade do |t|
     t.string "name", null: false
+    t.integer "term_of_validity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_documents_on_name", unique: true
@@ -77,6 +78,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_105140) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "car_owner_documents", "documents", on_delete: :cascade
-  add_foreign_key "car_owner_documents", "users", on_delete: :cascade
+  add_foreign_key "cars_owners_documents", "documents", on_delete: :cascade
+  add_foreign_key "cars_owners_documents", "users", on_delete: :cascade
 end
