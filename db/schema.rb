@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_02_165001) do
+=======
+ActiveRecord::Schema.define(version: 2021_12_31_141920) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +24,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "car_owner_documents", id: false, force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "document_id", null: false
@@ -46,6 +51,41 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
+=======
+  create_table "car_consumable_values", force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "consumable_id", null: false
+    t.integer "value", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id", "consumable_id"], name: "index_car_consumable_values_on_car_id_and_consumable_id", unique: true
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "model", default: "a12", null: false
+    t.integer "year_production", default: 2000, null: false
+    t.integer "engine_volume", default: 1, null: false
+    t.integer "mileage", default: 0, null: false
+    t.string "body_type", default: "sedan", null: false
+    t.integer "fuel_type", default: 0, null: false
+    t.integer "transmission_type", default: 0, null: false
+    t.string "maker", default: "bmw", null: false
+    t.string "vin", default: "123asdfaase123", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vin"], name: "index_cars_on_vin", unique: true
+  end
+
+  create_table "cars_parts", id: false, force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "part_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id", "part_id"], name: "index_cars_parts_on_car_id_and_part_id", unique: true
+  end
+
+>>>>>>> master
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -60,10 +100,27 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+<<<<<<< HEAD
   create_table "documents", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "name", default: 0, null: false
+=======
+  create_table "comments", force: :cascade do |t|
+    t.string "content", null: false
+    t.integer "user_id", null: false
+    t.bigint "comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_comments_on_comment_id"
+  end
+
+  create_table "consumables", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_consumables_on_name", unique: true
+>>>>>>> master
   end
 
   create_table "guests", force: :cascade do |t|
@@ -81,6 +138,13 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.index ["adress"], name: "index_organizations_on_adress", unique: true
     t.index ["email"], name: "index_organizations_on_email", unique: true
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_parts_on_name", unique: true
   end
 
   create_table "service_owners", force: :cascade do |t|
@@ -112,9 +176,18 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
   add_foreign_key "car_owner_documents", "documents", on_delete: :cascade
   add_foreign_key "car_owner_documents", "users", on_delete: :cascade
+=======
+  add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
+  add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
+>>>>>>> master
   add_foreign_key "cars", "users", on_delete: :cascade
-  add_foreign_key "cities_organizations", "cities"
-  add_foreign_key "cities_organizations", "organizations"
+  add_foreign_key "cars_parts", "cars", on_delete: :cascade
+  add_foreign_key "cars_parts", "parts", on_delete: :cascade
+  add_foreign_key "cities_organizations", "cities", on_delete: :cascade
+  add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
+  add_foreign_key "comments", "comments", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
 end
