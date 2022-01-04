@@ -26,7 +26,7 @@ class User < ApplicationRecord
     data = access_token.info
     user = user_by_email(data['email'])
 
-    return create_user(data) unless user
+    return create_user(data, access_token) unless user
 
     user
   end
@@ -39,9 +39,7 @@ class User < ApplicationRecord
     cars_owners_documents.find_by(document_id: id).update(issue_date: value)
   end
 
-  private
-
-  def create_user(data)
+  def self.create_user(data, access_token)
     password = Devise.friendly_token[0, 20]
 
     User.create(
@@ -55,7 +53,7 @@ class User < ApplicationRecord
     )
   end
 
-  def user_by_email(email)
+  def self.user_by_email(email)
     User.find_by(email: email)
   end
 end
