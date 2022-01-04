@@ -10,5 +10,5 @@
 
 %w[Minsk Brest Mogilev].each { |name| City.create(name: name) }
 
-# Car wil have consumables
+# Car wil have consumables, parts. User will have documents
 FactoryBot.create(:user_with_car)

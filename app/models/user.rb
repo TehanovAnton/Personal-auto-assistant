@@ -2,8 +2,8 @@
 
 class User < ApplicationRecord
 
-  has_many :car_owner_documents, dependent: :destroy
-  has_many :documents, through: :car_owner_documents
+  has_many :cars_owners_documents, dependent: :destroy
+  has_many :documents, through: :cars_owners_documents
 
   has_many :comments, dependent: :destroy
   has_many :cars, dependent: :destroy
