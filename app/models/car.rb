@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Car < ApplicationRecord
-  has_many :car_parts, dependent: :destroy
-  has_many :parts, through: :car_parts
+  has_many :cars_parts, dependent: :destroy
+  has_many :parts, through: :cars_parts
 
   has_many :car_consumable_values, dependent: :destroy
   has_many :consumables, through: :car_consumable_values

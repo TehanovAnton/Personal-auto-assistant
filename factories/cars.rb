@@ -18,6 +18,10 @@ FactoryBot.define do
         car.consumables.push(create(:consumable, name: key))
       end
 
+      Part.names.each_key do |key|
+        car.parts.push(create(:part, name: key))
+      end
+
       car.reload
     end
   end
