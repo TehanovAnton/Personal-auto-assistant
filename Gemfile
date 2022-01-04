@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'simple_form', '~> 5.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -37,10 +38,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'figaro', '~> 1.2'
-  gem 'rubocop-rails', require: false
   gem 'pry', '~> 0.14.1'
-  gem 'pry-remote'
   gem 'pry-nav'
+  gem 'pry-remote'
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
