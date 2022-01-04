@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :consumable do
-    name { 'fuel' }
+    name {}
   end
 end
