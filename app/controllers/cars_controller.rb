@@ -2,8 +2,7 @@
 
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy]
-  before_action :fuel_transmission_types, only: %i[new edit]
-  before_action :documents, only: %i[new edit]
+  before_action :fuel_types, :transmission_types, :documents, only: %i[new edit]
 
   def index
     @cars = Car.all
@@ -15,13 +14,13 @@ class CarsController < ApplicationController
     @car_form = CarForm.new(car: FactoryBot.build(:car))
   end
 
-  def edit; end
+  def edit
+    @car_form = CarForm.new(car: @car)
+  end
 
   def create
     @car = Car.new(car_params)
-
-    if @car.save && service.create_documents(documents: documents_params[:documents],
-                                             user_id: documents_params[:user_id])
+    if @car.save
       redirect_to @car, notice: 'Car was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -29,23 +28,16 @@ class CarsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-        format.json { render :show, status: :ok, location: @car }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.update(car_params)
+      redirect_to @car, notice: 'Car was successfully updated.'
+    else
+      redirect_to :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @car.destroy
-    respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to cars_url, notice: 'Car was successfully destroyed.'
   end
 
   private
@@ -59,12 +51,11 @@ class CarsController < ApplicationController
                                      :transmission_type, :maker, :vin, :user_id)
   end
 
-  def documents_params
-    params.require(:car_form).permit(:user_id, documents: {})
+  def fuel_types
+    @fuel_types = Car.fuel_types
   end
 
-  def fuel_transmission_types
-    @fuel_types = Car.fuel_types
+  def transmission_types
     @transmission_types = Car.transmission_types
   end
 

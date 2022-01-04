@@ -1,6 +1,10 @@
 <h1>Editing Car</h1>
 
-<%= render 'form', car: @car, fuel_types: @fuel_types, transmission_types: @transmission_types %>
+<%= render 'form', car_form: @car_form,
+                   fuel_types: @fuel_types,
+                   transmission_types: @transmission_types,
+                   url: car_path,
+                   method: :put %>
 
 <%= link_to 'Show', @car %> |
 <%= link_to 'Back', cars_path %>

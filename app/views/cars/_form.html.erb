@@ -1,4 +1,4 @@
-<%= simple_form_for car_form, url: cars_path do |form| %>
+<%= simple_form_for car_form, url: url, method: method do |form| %>
   <% if car_form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(car_form.errors.count, "error") %> prohibited this car from being saved:</h2>
@@ -29,27 +29,7 @@
   
   <%= form.input :maker, required: true %>
   
-  <%= form.input :vin, required: true %>
-  -------------------------------------------------------------------<br>
-
-  <% documents.each do |d| %>
-    <%= form.label "#{d.first}" %>
-
-    <%= form.label "Issue date" %>
-    <%= date_field "car_form[documents][#{d.first}]", "issue_date", require: true%>
-
-    <%= form.label "expire date" %>
-    <%= date_field "car_form[documents][#{d.first}]", "expire_date", require: true %>
-    <br><br>
-  <% end %>
-
-  <%
-=begin%>
- <%= render :documents_input, documents: documents %> 
-<%
-=end%>
-
-  
+  <%= form.input :vin, required: true %>  
   
   <%= form.button :submit%>
 <% end %>
