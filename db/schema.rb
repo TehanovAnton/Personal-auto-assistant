@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_31_141920) do
+ActiveRecord::Schema.define(version: 2022_01_02_165001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
     t.integer "engine_volume", default: 1, null: false
     t.integer "mileage", default: 0, null: false
     t.string "body_type", default: "sedan", null: false
-    t.integer "fuel_type", default: 0, null: false
-    t.integer "transmission_type", default: 0, null: false
     t.string "maker", default: "bmw", null: false
     t.string "vin", default: "123asdfaase123", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "fuel_type", default: 0, null: false
+    t.integer "transmission_type", default: 0, null: false
     t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
@@ -93,11 +93,10 @@ ActiveRecord::Schema.define(version: 2021_12_31_141920) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "name", default: 0, null: false
     t.integer "term_of_validity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_documents_on_name", unique: true
+    t.integer "name", default: 0, null: false
   end
 
   create_table "guests", force: :cascade do |t|
