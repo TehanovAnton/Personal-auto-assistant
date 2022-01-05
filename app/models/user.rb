@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :cars_owners_documents, dependent: :destroy
+  has_many :documents, through: :cars_owners_documents
+
   has_many :comments, dependent: :destroy
   has_many :cars, dependent: :destroy
 
@@ -25,6 +28,16 @@ class User < ApplicationRecord
 
     user
   end
+
+  def document_issue_date(id:)
+    cars_owners_documents.find_by(document_id: id).issue_date
+  end
+
+  def set_document_issue_date(id:, value:)
+    cars_owners_documents.find_by(document_id: id).update(issue_date: value)
+  end
+
+  private
 
   def create_user(data)
     password = Devise.friendly_token[0, 20]

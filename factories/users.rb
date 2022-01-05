@@ -16,6 +16,14 @@ FactoryBot.define do
       end
     end
 
-    after(:create, &:confirm)
+    after(:create) do |user|
+      user.confirm
+
+      Document.names.each_key do |key|
+        user.documents.push(create(:document, name: key))
+      end
+
+      user.reload
+    end
   end
 end
