@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.string "phone_number", null: false
     t.string "address", null: false
     t.string "name", null: false
+    t.integer "service_owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address"], name: "index_organizations_on_address", unique: true
@@ -120,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.integer "organization_id", null: false
     t.integer "service_id", null: false
     t.integer "service_work_id", null: false
-    t.integer "price", null: false
+    t.integer "price", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["service_work_id"], name: "organization_service_servicework_price_index", unique: true
@@ -190,6 +191,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "comments", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "service_works", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "services", on_delete: :cascade

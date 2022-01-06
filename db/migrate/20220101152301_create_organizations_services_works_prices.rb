@@ -4,7 +4,7 @@ class CreateOrganizationsServicesWorksPrices < ActiveRecord::Migration[6.1]
       t.integer :organization_id, null: false
       t.integer :service_id, null: false
       t.integer :service_work_id, null: false
-      t.integer :price, null: false
+      t.integer :price, null: false, default: 1
 
       t.timestamps
     end
