@@ -10,5 +10,6 @@ class Service < ApplicationRecord
     'design salon': 3
   }
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, :email, :phone_number, :address, presence: true
+  validates :name, uniqueness: true, inclusion: { in: Service.names.keys }
 end

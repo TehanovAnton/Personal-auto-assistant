@@ -107,11 +107,11 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   create_table "organizations", force: :cascade do |t|
     t.string "email", null: false
     t.string "phone_number", null: false
-    t.string "adress", null: false
+    t.string "address", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["adress"], name: "index_organizations_on_adress", unique: true
+    t.index ["address"], name: "index_organizations_on_address", unique: true
     t.index ["email"], name: "index_organizations_on_email", unique: true
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
   end
@@ -138,6 +138,9 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
 
   create_table "services", force: :cascade do |t|
     t.integer "name", default: 0, null: false
+    t.string "email", null: false
+    t.string "phone_number", null: false
+    t.string "address", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_services_on_name", unique: true
