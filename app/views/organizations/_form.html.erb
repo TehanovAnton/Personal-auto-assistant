@@ -12,11 +12,15 @@
   <% end %>
 
   <%= form.input :email %>
+
   <%= form.input :phone_number %>
+
   <%= form.input :adress %>
+
   <%= form.input :name %>
 
   <%= form.input :city_ids, label: 'Cities', as: :check_boxes, collection: cities, label_method: :name, value_method: :id %>
 
-  <%= form.button :submit %>
+  <%= form.button :submit %>|
+  <%= link_to 'Back', organizations_path %>
 <% end %>
