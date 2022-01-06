@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string "name", null: false
+    t.integer "name", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_services_on_name", unique: true
