@@ -6,6 +6,6 @@ class Document < ApplicationRecord
 
   enum name: { license: 0, insurance: 1 }
 
-  validates :name, presence: true
+  validates :name, presence: true, inclusion: { in: Document.names.keys }
   validates :term_of_validity, numericality: { only_integer: true, greater_than: 28 }
 end
