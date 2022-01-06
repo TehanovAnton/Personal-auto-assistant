@@ -25,11 +25,9 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= select_tag 'user[role]', options_from_collection_for_select(
-      User.roles.first(2),
-      'first',
-      'first'
-    ) %>
+    <%= select_tag 'user[role]',
+      options_from_collection_for_select(User.roles.first(2), 'first', 'first')
+    %>
   </div>
 
   <div class="field">

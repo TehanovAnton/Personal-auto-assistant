@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @car.model %>
+</p>
+
+<p>
+  <strong>Year production:</strong>
+  <%= @car.year_production %>
+</p>
+
+<p>
+  <strong>Engine volume:</strong>
+  <%= @car.engine_volume %>
+</p>
+
+<p>
+  <strong>Mileage:</strong>
+  <%= @car.mileage %>
+</p>
+
+<p>
+  <strong>Body type:</strong>
+  <%= @car.body_type %>
+</p>
+
+<p>
+  <strong>Fuel type:</strong>
+  <%= @car.fuel_type %>
+</p>
+
+<p>
+  <strong>Transmission type:</strong>
+  <%= @car.transmission_type %>
+</p>
+
+<p>
+  <strong>Maker:</strong>
+  <%= @car.maker %>
+</p>
+
+<p>
+  <strong>Vin:</strong>
+  <%= @car.vin %>
+</p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>

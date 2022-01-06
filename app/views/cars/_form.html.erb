@@ -1,0 +1,35 @@
+<%= simple_form_for car_form, url: url, method: method do |form| %>
+  <% if car_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(car_form.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+        <% car_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <%= form.input :model, required: true %>
+
+  <%= form.input :year_production, required: true %>
+  
+  <%= form.input :engine_volume, required: true %>
+  
+  <%= form.input :mileage, required: true %>
+  
+  <%= form.input :body_type, required: true %>
+  
+  <%= form.input :fuel_type, collection: fuel_types, value_method: :first, include_blank: false %>
+  
+  <%= form.input :transmission_type, collection: transmission_types, value_method: :first, include_blank: false %>
+  
+  <%= form.input :maker, required: true %>
+  
+  <%= form.input :vin, required: true %>  
+  
+  <%= form.button :submit%>
+<% end %>

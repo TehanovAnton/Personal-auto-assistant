@@ -1,7 +1,10 @@
 class CreateServices < ActiveRecord::Migration[6.1]
   def change
     create_table :services do |t|
-      t.string :name, null: false
+      t.integer :name, null: false, default: 0
+      t.string :email, null: false
+      t.string :phone_number, null: false
+      t.string :address, null: false
 
       t.timestamps
     end

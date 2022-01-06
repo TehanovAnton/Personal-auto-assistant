@@ -3,6 +3,9 @@ require: rubocop-rails
 Style/Documentation:
   Enabled: false
 
-Rails:
+AllCops:
   Exclude:
-    - 'config/**/*'
+    - config/**/*
+    - db/migrate/*
+    - db/schema.rb
+    - bin/**/*
