@@ -11,13 +11,22 @@
 </p>
 
 <p>
-  <strong>Adress:</strong>
-  <%= @organization.adress %>
+  <strong>Address:</strong>
+  <%= @organization.address %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @organization.name %>
+</p>
+
+<p>
+  <strong>Cities</strong>:<br> 
+  <ul>
+    <% @organization.cities.each do |city| %>
+      <li><%= city.name %></li>
+    <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
