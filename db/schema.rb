@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.string "phone_number", null: false
     t.string "address", null: false
     t.string "name", null: false
+    t.integer "service_owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address"], name: "index_organizations_on_address", unique: true
@@ -116,12 +117,14 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
   end
 
-  create_table "organizations_services", force: :cascade do |t|
+  create_table "organizations_services_works_prices", id: false, force: :cascade do |t|
     t.integer "organization_id", null: false
     t.integer "service_id", null: false
+    t.integer "service_work_id", null: false
+    t.integer "price", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organization_id", "service_id"], name: "index_organizations_services_on_organization_id_and_service_id", unique: true
+    t.index ["service_work_id"], name: "organization_service_servicework_price_index", unique: true
   end
 
   create_table "parts", force: :cascade do |t|
@@ -134,6 +137,13 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   create_table "service_owners", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "service_works", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_service_works_on_name", unique: true
   end
 
   create_table "services", force: :cascade do |t|
@@ -181,6 +191,8 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "comments", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
-  add_foreign_key "organizations_services", "organizations", on_delete: :cascade
-  add_foreign_key "organizations_services", "services", on_delete: :cascade
+  add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
+  add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade
+  add_foreign_key "organizations_services_works_prices", "service_works", on_delete: :cascade
+  add_foreign_key "organizations_services_works_prices", "services", on_delete: :cascade
 end
