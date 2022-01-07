@@ -2,5 +2,4 @@
 
 <%= render 'form', cars_owners_document: @cars_owners_document %>
 
-<%= link_to 'Show', @cars_owners_document %> |
-<%= link_to 'Back', cars_owners_documents_path %>
+<%= link_to 'Back', cars_owners_documents_path(user_id: current_user.id) %>

@@ -4,6 +4,8 @@ class CarsOwnersDocument < ApplicationRecord
   belongs_to :user
   belongs_to :document
 
+  delegate :name, to: :document
+
   validates :issue_date, presence: true
   validates :term_of_validity, numericality: { only_integer: true, greater_than: 28 }
   validate :earlier_than_now?

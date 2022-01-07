@@ -56,4 +56,8 @@ class User < ApplicationRecord
   def self.user_by_email(email)
     User.find_by(email: email)
   end
+
+  def all_documents?
+    documents.count == Document.count
+  end
 end
