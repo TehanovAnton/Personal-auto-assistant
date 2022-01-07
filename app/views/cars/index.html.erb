@@ -32,17 +32,10 @@
         <td><%= car.vin %></td>
         <td><%= link_to 'Show', car %></td>
         <td><%= link_to 'Consumables', car_consumable_values_path(car_id: car.id) %></td>
-        <td><%= link_to 'Parts', car_consumable_values_path(car_id: car.id) %></td>
+        <td><%= link_to 'Parts', parts_path(car) %></td>
         <td><%= link_to 'Edit', edit_car_path(car) %></td>
         <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-
-      <tr>
-        <strong>Parts:</strong>
-        <% car.parts.each do |part| %> 
-          <%= part.name %>
-        <% end %>
-      <tr>
     <% end %>
   </tbody>
 </table>

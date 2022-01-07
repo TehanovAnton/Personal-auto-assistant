@@ -1,0 +1,8 @@
+<ul>
+  <% @car.parts.each do |part| %> 
+    <li><%= part.name %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to('Add part', new_part_path(@car)) unless @car.all_parts? %>

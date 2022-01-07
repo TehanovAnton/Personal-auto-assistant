@@ -1,0 +1,6 @@
+<%= form_with(url: add_part_path(id: @car.id), method: :put) do |form| %>
+  <%= form.collection_check_boxes 'car[parts]', @parts, :id, :name%>
+  <br>
+
+  <%= form.submit 'Add'  %>
+<% end %>

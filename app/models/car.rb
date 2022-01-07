@@ -30,4 +30,8 @@ class Car < ApplicationRecord
     car_consumable_value = car_consumable_values.find_by(consumable_id: consumable_id)
     car_consumable_value.update(value: value)
   end
+
+  def all_parts?
+    parts.size == Part.count
+  end
 end

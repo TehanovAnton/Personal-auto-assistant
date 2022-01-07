@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[show edit update destroy]
+  before_action :set_car, only: %i[show edit update destroy parts new_part add_part]
   before_action :fuel_types, :transmission_types, :documents, only: %i[new edit]
 
   def index
@@ -40,6 +40,16 @@ class CarsController < ApplicationController
     redirect_to cars_url, notice: 'Car was successfully destroyed.'
   end
 
+  def parts; end
+
+  def new_part
+    @parts = Part.select { |part| part unless @car.parts.include?(part) }
+  end
+
+  def add_part
+    @car.parts << new_car_parts
+  end
+
   private
 
   def set_car
@@ -49,6 +59,12 @@ class CarsController < ApplicationController
   def car_params
     params.require(:car_form).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
                                      :transmission_type, :maker, :vin, :user_id)
+  end
+
+  def new_car_parts
+    parts_params = params.require(:car).permit(parts: [])
+    parts_params = parts_params.to_h[:parts].map { |id| id.to_i if id.present? }.uniq
+    Part.select { |p| p if parts_params.include?(p.id) }
   end
 
   def fuel_types
