@@ -2,5 +2,4 @@
 
 <%= render 'form', car_consumable_value: @car_consumable_value %>
 
-<%= link_to 'Show', @car_consumable_value %> |
-<%= link_to 'Back', car_consumable_values_path %>
+<%= link_to 'Back', car_consumable_values_path(car_id: @car_consumable_value.car_id) %>

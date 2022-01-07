@@ -1,9 +1,11 @@
 
 <%= simple_form_for(@car_consumable_value) do |f| %>
   <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>  
+  <%= f.hidden_field :car_id, value: @car_consumable_value.car_id %>
 
   <div class="form-inputs">
+    <%= f.label car_consumable_value.name %>
     <%= f.input :value %>
   </div>
 
