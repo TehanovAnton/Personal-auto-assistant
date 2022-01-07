@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  resources :services
   root to: 'users#home'
 
   get '/cars_owners_documents/:user_id/new_document', to: 'cars_owners_documents#new_document', as: 'new_document'

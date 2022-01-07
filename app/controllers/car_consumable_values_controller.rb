@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CarConsumableValuesController < ApplicationController
   before_action :set_car_consumable_value, only: %i[edit update]
 
@@ -9,7 +11,8 @@ class CarConsumableValuesController < ApplicationController
 
   def update
     if @car_consumable_value.update(car_consumable_value_params)
-      redirect_to car_consumable_values_path(car_id: car_consumable_value_params[:car_id]), notice: 'Car consumable value was successfully updated.'
+      redirect_to car_consumable_values_path(car_id: car_consumable_value_params[:car_id]),
+                  notice: 'Car consumable value was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

@@ -8,7 +8,5 @@ class CarConsumableValue < ApplicationRecord
 
   validates :value, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  def car_id
-    car.id
-  end
+  delegate :id, to: :car, prefix: true
 end

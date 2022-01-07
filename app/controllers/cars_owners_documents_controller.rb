@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CarsOwnersDocumentsController < ApplicationController
   before_action :set_cars_owners_document, only: %i[edit update]
   before_action :set_user, only: %i[new_document add_document update]
@@ -19,8 +21,8 @@ class CarsOwnersDocumentsController < ApplicationController
 
   def update
     if @cars_owners_document.update(cars_owners_document_params)
-      binding.pry
-      redirect_to cars_owners_documents_path(user_id: @user.id), notice: "Cars owners document was successfully updated."
+      redirect_to cars_owners_documents_path(user_id: @user.id),
+                  notice: 'Cars owners document was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +39,7 @@ class CarsOwnersDocumentsController < ApplicationController
   end
 
   def cars_owners_document_params
-    params.require(:cars_owners_document).permit(:issue_date, :term_of_validity, :user_id )
+    params.require(:cars_owners_document).permit(:issue_date, :term_of_validity, :user_id)
   end
 
   def new_user_documents

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<% Organization.all.each do |organization| %>
+  By <%= organization.name %>:
+  <ul>
+    <% organization.services.each do |service| %>
+      <li><%= service.name %></li>
+    <% end %>
+  </ul>
+  <hr>
+<% end %>
+
+<%= link_to 'New Service', new_service_path %>
