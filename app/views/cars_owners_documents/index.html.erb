@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cars Owners Documents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Issue date</th>
+      <th>Term of validity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cars_owners_documents.each do |cars_owners_document| %>
+      <tr>
+        <td><%= cars_owners_document.issue_date %></td>
+        <td><%= cars_owners_document.term_of_validity %></td>
+        <td><%= link_to 'Show', cars_owners_document %></td>
+        <td><%= link_to 'Edit', edit_cars_owners_document_path(cars_owners_document) %></td>
+        <td><%= link_to 'Destroy', cars_owners_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cars Owners Document', new_cars_owners_document_path %>

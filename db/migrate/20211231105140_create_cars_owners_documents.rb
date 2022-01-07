@@ -4,6 +4,7 @@ class CreateCarsOwnersDocuments < ActiveRecord::Migration[6.1]
       t.integer :user_id, null: false
       t.integer :document_id, null: false
       t.date :issue_date, null: false, default: Date.new(2021, 1, 1)
+      t.integer :term_of_validity, null: false, default: 29
 
       t.timestamps
     end

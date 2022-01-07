@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.integer "user_id", null: false
     t.integer "document_id", null: false
     t.date "issue_date", default: "2021-01-01", null: false
+    t.integer "term_of_validity", default: 29, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id", "document_id"], name: "index_cars_owners_documents_on_user_id_and_document_id", unique: true
@@ -93,7 +94,6 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.integer "term_of_validity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "name", default: 0, null: false

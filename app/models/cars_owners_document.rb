@@ -5,6 +5,7 @@ class CarsOwnersDocument < ApplicationRecord
   belongs_to :document
 
   validates :issue_date, presence: true
+  validates :term_of_validity, numericality: { only_integer: true, greater_than: 28 }
   validate :earlier_than_now?
 
   private

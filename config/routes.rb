@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :cars_owners_documents
   root to: 'users#home'
   
   resources :car_consumable_values
