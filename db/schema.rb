@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_145258) do
+ActiveRecord::Schema.define(version: 2022_01_08_232604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_id", "part_id"], name: "index_cars_parts_on_car_id_and_part_id", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -134,6 +140,14 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
     t.index ["organization_id", "service_id", "service_work_id"], name: "organization_service_servicework_price_index", unique: true
   end
 
+  create_table "organizations_works", force: :cascade do |t|
+    t.bigint "organization_id", null: false
+    t.integer "price", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_organizations_works_on_organization_id"
+  end
+
   create_table "parts", force: :cascade do |t|
     t.integer "name", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -146,13 +160,6 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "service_works", force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["title"], name: "index_service_works_on_title", unique: true
-  end
-
   create_table "services", force: :cascade do |t|
     t.integer "name", default: 0, null: false
     t.string "email", null: false
@@ -160,7 +167,18 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
     t.string "address", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organization_id", null: false
     t.index ["name"], name: "index_services_on_name", unique: true
+    t.index ["organization_id"], name: "index_services_on_organization_id"
+  end
+
+  create_table "services_works", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.bigint "work_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_services_works_on_service_id"
+    t.index ["work_id"], name: "index_services_works_on_work_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -187,6 +205,15 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "works", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_works_on_category_id"
+    t.index ["title"], name: "index_works_on_title", unique: true
+  end
+
   add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
   add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
   add_foreign_key "cars", "users", on_delete: :cascade
@@ -201,6 +228,11 @@ ActiveRecord::Schema.define(version: 2022_01_08_145258) do
   add_foreign_key "orders", "organizations_services_works_prices", on_delete: :cascade
   add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade
-  add_foreign_key "organizations_services_works_prices", "service_works", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "services", on_delete: :cascade
+  add_foreign_key "organizations_services_works_prices", "works", column: "service_work_id", on_delete: :cascade
+  add_foreign_key "organizations_works", "organizations"
+  add_foreign_key "services", "organizations"
+  add_foreign_key "services_works", "services"
+  add_foreign_key "services_works", "works"
+  add_foreign_key "works", "categories"
 end
