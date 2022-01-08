@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
-  resources :orders
-  resources :services
   root to: 'users#home'
+
+  resources :orders, path: "orders/(:user_id)" 
+
+  resources :services
 
   get '/cars_owners_documents/:user_id/new_document', to: 'cars_owners_documents#new_document', as: 'new_document'
   put '/cars_owners_documents/:user_id/add_document', to: 'cars_owners_documents#add_document', as: 'add_document'
@@ -12,11 +13,10 @@ Rails.application.routes.draw do
   
   resources :car_consumable_values
 
-  resources :cars
-
   get '/cars/:id/parts', to: 'cars#parts', as: 'parts'
   get '/cars/:id/new_part', to: 'cars#new_part', as: 'new_part'
   put '/cars/:id/add_part', to: 'cars#add_part', as: 'add_part'
+  resources :cars
 
   get '/organizations/:id/services', to: 'organizations#services', as: 'organization_services'
   get '/organizations/:id/service', to: 'organizations#new_services', as: 'new_organization_services'

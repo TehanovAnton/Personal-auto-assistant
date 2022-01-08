@@ -3,13 +3,17 @@
 <h1>Services</h1>
 
 <% Organization.all.each do |organization| %>
-  By <%= organization.name %>:
+  By <%= organization.name %>: <%= link_to 'make Order' , new_order_path(current_user, organization_id: organization.id) %>
   <ul>
     <% organization.services.each do |service| %>
-      <li><%= service.name %></li>
+      <li><%= service.name %>
+        <div>
+          <% service.organization_service_works(organization_id: organization.id).each do |service_work| %>
+            <%= "#{service_work.title}: #{service.organization_service_work_price(organization_id: organization.id, service_work_id: service_work.id)} " %>
+          <% end %>
+        </div>
+      </li>
     <% end %>
   </ul>
   <hr>
 <% end %>
-
-<%= link_to 'New Service', new_service_path %>
