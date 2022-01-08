@@ -13,4 +13,16 @@ class Service < ApplicationRecord
 
   validates :name, :email, :phone_number, :address, presence: true
   validates :name, uniqueness: true, inclusion: { in: Service.names.keys }
+
+  def name_in_one_word
+    name.gsub(' ', '_')
+  end
+
+  def self.original_name(name)
+    name.gsub('_', ' ')
+  end
+
+  def self.id_by_name(name)
+    Service.find_by(name: name).id
+  end
 end

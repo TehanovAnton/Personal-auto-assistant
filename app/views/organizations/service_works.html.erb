@@ -1,0 +1,12 @@
+<%= form_with(url: add_organization_services_path(@organization), method: :post) do |form| %>
+  <% @services.each do |service| %>
+    <%= form.hidden_field service.name_in_one_word, value: service.id %>
+    <strong><%= service.name %></strong>:
+    <br>
+
+    <%= collection_check_boxes "organization_services[#{service.name_in_one_word}]", 'service_works', @service_works, :id, :title %>
+    <br>
+  <% end %>
+
+  <%= form.submit 'Add' %>
+<% end %>

@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :service_work do
-    name {}
+    title {}
   end
 end

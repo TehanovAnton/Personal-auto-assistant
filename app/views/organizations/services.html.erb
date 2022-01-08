@@ -1,0 +1,8 @@
+<%= @organization.name %> services:
+<ul>
+  <% @services.each do |service| %>
+    <li><%= service.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add service', new_organization_services_path(@organization) unless @organization.all_services? %>

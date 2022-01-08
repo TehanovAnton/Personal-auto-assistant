@@ -10,4 +10,8 @@ class Organization < ApplicationRecord
   belongs_to :service_owner
 
   validates :address, :email, :name, :phone_number, presence: true, uniqueness: true
+
+  def all_services?
+    services.count == Service.count
+  end
 end

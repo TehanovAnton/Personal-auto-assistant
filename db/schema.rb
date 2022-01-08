@@ -117,14 +117,14 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.index ["phone_number"], name: "index_organizations_on_phone_number", unique: true
   end
 
-  create_table "organizations_services_works_prices", id: false, force: :cascade do |t|
+  create_table "organizations_services_works_prices", force: :cascade do |t|
     t.integer "organization_id", null: false
     t.integer "service_id", null: false
     t.integer "service_work_id", null: false
     t.integer "price", default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["service_work_id"], name: "organization_service_servicework_price_index", unique: true
+    t.index ["organization_id", "service_id", "service_work_id"], name: "organization_service_servicework_price_index", unique: true
   end
 
   create_table "parts", force: :cascade do |t|
@@ -140,10 +140,10 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   end
 
   create_table "service_works", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_service_works_on_name", unique: true
+    t.index ["title"], name: "index_service_works_on_title", unique: true
   end
 
   create_table "services", force: :cascade do |t|
