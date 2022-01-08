@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_165001) do
+ActiveRecord::Schema.define(version: 2022_01_08_145258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,13 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "organizations_services_works_price_id", null: false
+    t.integer "car_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "email", null: false
     t.string "phone_number", null: false
@@ -191,6 +198,7 @@ ActiveRecord::Schema.define(version: 2022_01_02_165001) do
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "comments", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "orders", "organizations_services_works_prices", on_delete: :cascade
   add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "service_works", on_delete: :cascade

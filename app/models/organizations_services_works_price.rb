@@ -5,6 +5,8 @@ class OrganizationsServicesWorksPrice < ApplicationRecord
   belongs_to :service
   belongs_to :service_work
 
+  has_many :orders, dependent: :destroy
+
   delegate :name, to: :service
   delegate :title, to: :service_work
 
