@@ -1,14 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Organizations services works price:</strong>
-  <%= @order.organizations_services_works_price_id %>
+  <strong>Order price:</strong>
+  <%= @order.price %>
 </p>
 
 <p>
   <strong>Car:</strong>
   <%= @order.car_id %>
 </p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= render 'comments/form', commentable: @order %>
+  <%= render 'comments/comments', comments: @order.comments %>
+</p>
+
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

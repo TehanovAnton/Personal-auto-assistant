@@ -5,6 +5,7 @@ class Service < ApplicationRecord
 
   has_many :services_works, dependent: :destroy
   has_many :works, through: :services_works
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :name, :email, :phone_number, :address, presence: true
   validates :name, uniqueness: true

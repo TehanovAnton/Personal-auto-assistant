@@ -1,0 +1,6 @@
+<%= simple_form_for(Comment.new) do |f| %>
+  <%= f.input :content, label: false %>
+  <%= f.hidden_field :commentable_id, value: commentable.id %>
+  <%= f.hidden_field :commentable_type, value: commentable.class.to_s %>
+  <%= f.submit 'Add comment' %>
+<% end %>
