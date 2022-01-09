@@ -13,7 +13,8 @@
 <p>
   <strong>Comments:</strong>
   <%= render 'comments/form', commentable: @order %>
-  <%= render 'comments/comments', comments: @order.comments %>
+  <%= render 'comments/comments', comments: @comments %>
+  <%= paginate @comments%>
 </p>
 
 

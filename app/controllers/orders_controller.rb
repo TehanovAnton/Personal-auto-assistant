@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
     @orders = Order.where(car_id: params[:car_id]).page params[:page]
   end
 
-  def show; end
+  def show
+    @comments = @order.comments.page(params[:page])
+  end
 
   def new
     @order = Order.new

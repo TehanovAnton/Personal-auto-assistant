@@ -21,7 +21,8 @@
         <td><%= order.service.name %></td>
         <td><%= order.work.title %></td>
         <td><%= order.price %></td>
-        <td><%= "#{order.car.maker}, #{order.car.model}" %></td>        
+        <td><%= "#{order.car.maker}, #{order.car.model}" %></td>    
+        <td><%= link_to 'Show', order_path(order) %></td>    
         <td><%= link_to 'Destroy', order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
