@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Comment < ApplicationRecord
-  has_many :subcomments, class_name: 'Comment',
-                         dependent: :destroy
-
-  belongs_to :comment, class_name: 'Comment', optional: true
+  belongs_to :user
+  belongs_to :commentable, polymorphic: true, optional: true
+  has_many :comments, as: :commentable, dependent: :destroy
 end

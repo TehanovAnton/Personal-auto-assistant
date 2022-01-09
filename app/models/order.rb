@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   belongs_to :services_work
   belongs_to :car
 
+  has_many :comments, as: :commentable, dependent: :destroy
+
   delegate :work, :service, to: :services_work
   delegate :organization, to: :service
   delegate :user, to: :car

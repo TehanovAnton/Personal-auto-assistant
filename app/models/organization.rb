@@ -9,6 +9,8 @@ class Organization < ApplicationRecord
   has_many :organizations_works, dependent: :destroy
   has_many :works, through: :organizations_works
 
+  has_many :comment, as: :commentable, dependent: :destroy
+
   belongs_to :service_owner
 
   validates :address, :email, :name, :phone_number, presence: true, uniqueness: true
