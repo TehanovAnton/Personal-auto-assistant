@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Car < ApplicationRecord
+  paginates_per 2
+
   has_many :cars_parts, dependent: :destroy
   has_many :parts, through: :cars_parts
 

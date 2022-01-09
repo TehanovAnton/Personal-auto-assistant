@@ -5,7 +5,7 @@ class CarsController < ApplicationController
   before_action :fuel_types, :transmission_types, :documents, only: %i[new edit]
 
   def index
-    @cars = Car.all
+    @cars = Car.all.page params[:page]
   end
 
   def show; end

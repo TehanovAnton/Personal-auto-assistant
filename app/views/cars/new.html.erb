@@ -2,7 +2,8 @@
 
 <%= render 'form', car_form: @car_form,
                    fuel_types: @fuel_types,
-                   transmission_types: @transmission_types
-                   url: cars_path %>
+                   transmission_types: @transmission_types,
+                   url: cars_path,
+                   method: :post %>
 
 <%= link_to 'Back', cars_path %>

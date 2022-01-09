@@ -1,4 +1,4 @@
-<%= simple_form_for car_form, url: url, method: method do |form| %>
+<%= simple_form_for(car_form, url: url, method: method) do |form| %>
   <% if car_form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(car_form.errors.count, "error") %> prohibited this car from being saved:</h2>
