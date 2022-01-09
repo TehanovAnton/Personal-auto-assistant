@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :order do
-    organizations_services_works_price_id {}
+    services_work_id {}
     car_id {}
   end
 end
