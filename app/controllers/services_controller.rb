@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   before_action :set_organization, only: %i[index show new create edit]
 
   def index
-    @services = @organization.services
+    @services = @organization.services.page params[:page]
   end
 
   def show

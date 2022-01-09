@@ -38,4 +38,4 @@ Works:
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service, organization_id: @organization.id) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Back', services_path(organization_id: @organization.id) %>

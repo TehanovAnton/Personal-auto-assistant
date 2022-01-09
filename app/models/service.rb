@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
+  paginates_per 3
+
   belongs_to :organization
 
   has_many :services_works, dependent: :destroy
