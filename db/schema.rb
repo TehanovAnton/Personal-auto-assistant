@@ -229,15 +229,15 @@ ActiveRecord::Schema.define(version: 2022_01_09_052401) do
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "comments", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
-  add_foreign_key "orders", "services_works"
+  add_foreign_key "orders", "services_works", on_delete: :cascade
   add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "services", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "works", column: "service_work_id", on_delete: :cascade
-  add_foreign_key "organizations_works", "organizations"
-  add_foreign_key "organizations_works", "works"
-  add_foreign_key "services", "organizations"
-  add_foreign_key "services_works", "services"
-  add_foreign_key "services_works", "works"
-  add_foreign_key "works", "categories"
+  add_foreign_key "organizations_works", "organizations", on_delete: :cascade
+  add_foreign_key "organizations_works", "works", on_delete: :cascade
+  add_foreign_key "services", "organizations", on_delete: :cascade
+  add_foreign_key "services_works", "services", on_delete: :cascade
+  add_foreign_key "services_works", "works", on_delete: :cascade
+  add_foreign_key "works", "categories", on_delete: :cascade
 end
