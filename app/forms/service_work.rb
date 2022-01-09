@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceWork
   include ActiveModel::Model
 
@@ -13,7 +15,8 @@ class ServiceWork
     @price = @organization_work.price
   end
 
-  def update(params)    
-    work.update(category_id: params[:category], title: params[:title]) && @organization_work.update(price: params[:price])
+  def update(params)
+    work.update(category_id: params[:category],
+                title: params[:title]) && @organization_work.update(price: params[:price])
   end
 end

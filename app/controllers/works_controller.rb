@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class WorksController < ApplicationController
-  before_action :set_work, :set_service, only: %i[ edit update destroy ]
+  before_action :set_work, :set_service, only: %i[edit update destroy]
 
   def new
     @work = Work.new
@@ -14,7 +16,7 @@ class WorksController < ApplicationController
 
     respond_to do |format|
       if @work.save
-        format.html { redirect_to @work, notice: "Work was successfully created." }
+        format.html { redirect_to @work, notice: 'Work was successfully created.' }
         format.json { render :show, status: :created, location: @work }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -28,7 +30,7 @@ class WorksController < ApplicationController
 
     if @service_work.update(service_work_params)
       redirect_to service_path(@service, organization_id: @service.organization.id),
-                  notice: "Work was successfully updated."
+                  notice: 'Work was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +39,7 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
     respond_to do |format|
-      format.html { redirect_to works_url, notice: "Work was successfully destroyed." }
+      format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

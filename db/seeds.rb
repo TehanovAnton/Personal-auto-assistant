@@ -12,7 +12,7 @@
 
 # Car wil have consumables, parts. User will have documents
 FactoryBot.create(:user, role: 'service_owner', email: 'without_car@gmail.com')
-FactoryBot.create(:user_with_car, email: 'tehanovanton@gmail.com')
+FactoryBot.create(:user_with_car, role: 'service_owner', email: 'tehanovanton@gmail.com')
 
 Category.create(name: 'cleaning')
 

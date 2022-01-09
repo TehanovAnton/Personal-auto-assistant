@@ -28,7 +28,8 @@ class ServicesController < ApplicationController
 
   def update
     if @service.update(service_params)
-      redirect_to service_path(@service, organization_id: @service.organization.id), notice: 'Service was successfully updated.'
+      redirect_to service_path(@service, organization_id: @service.organization.id),
+                  notice: 'Service was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

@@ -18,24 +18,17 @@ class OrdersController < ApplicationController
     @cars = Car.where(user_id: current_user.id)
   end
 
-  def edit; end
-
   def create
-    services_work = ServicesWork.find_by(service_id: order_params[:service_id],
-                                         work_id: order_params[:service_id])
-
-    binding.pry
-
-    car = Car.find_by(id: order_params[:car_id])
-
-    @order = Order.new(services_work_id: services_work.id, car_id: car.id, mileage: car.mileage)
-
-    if @order.save
-      redirect_to orders_path(car_id: car.id), notice: 'Order was successfully created.'
+    service = OrderService.new(service_id: order_params[:service_id], work_id: order_params[:work_id],
+                               car_id: order_params[:car_id])
+    if service.new_order.save
+      redirect_to orders_path(car_id: service.car.id), notice: 'Order was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit; end
 
   def update
     respond_to do |format|

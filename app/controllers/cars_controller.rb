@@ -78,8 +78,4 @@ class CarsController < ApplicationController
   def documents
     @documents = Document.names
   end
-
-  def service
-    @service ||= UserService.new
-  end
 end

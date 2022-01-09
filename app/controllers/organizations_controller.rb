@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[show edit destroy services new_services service_works]
+  before_action :set_organization, only: %i[show edit destroy]
   before_action :set_cities, only: %i[new edit]
   before_action -> { organization(organization_id: params[:id]) }, only: %i[create update]
 
@@ -62,7 +62,7 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_params
-    params.require(:organization).permit(:email, :phone_number, :adress, :name, city_ids: [])
+    params.require(:organization).permit(:service_owner_id, :email, :phone_number, :address, :name, city_ids: [])
   end
 
   def choosen_services
