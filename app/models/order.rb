@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
+  paginates_per 2
+
   belongs_to :services_work
   belongs_to :car
 
