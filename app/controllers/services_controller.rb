@@ -8,7 +8,9 @@ class ServicesController < ApplicationController
     @services = @organization.services
   end
 
-  def show; end
+  def show
+    @comments = @service.comments.page params[:page]
+  end
 
   def new
     @service = Service.new
@@ -20,7 +22,8 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
 
     if @service.save
-      redirect_to @service, notice: 'Service was successfully created.'
+      redirect_to service_path(@service, organization_id: @service.organization.id),
+                  notice: 'Service was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end

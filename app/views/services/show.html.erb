@@ -33,7 +33,8 @@ Works:
 <p>
   <strong>Comments:</strong>
   <%= render 'comments/form', commentable: @service %>
-  <%= render 'comments/comments', comments: @service.comments %>
+  <%= render 'comments/comments', comments: @comments %>
+  <%= paginate @comments %>
 </p>
 
 <%= link_to 'Edit', edit_service_path(@service, organization_id: @organization.id) %> |
