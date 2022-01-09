@@ -11,8 +11,11 @@
 %w[Minsk Brest Mogilev].each { |name| City.create(name: name) }
 
 # Car wil have consumables, parts. User will have documents
-FactoryBot.create(:user_with_car, email: 'with_car@gmail.com')
-FactoryBot.create(:user, role: 'service_owner', email: 'tehanovanton@gmail.com')
+FactoryBot.create(:user, role: 'service_owner', email: 'without_car@gmail.com')
+FactoryBot.create(:user_with_car, email: 'tehanovanton@gmail.com')
 
 Category.create(name: 'cleaning')
+
 FactoryBot.create(:organization_with_service, name: 'apolo')
+
+# FactoryBot.create(:order, car_id: Car.last.id, services_work_id: ServicesWork.last.id, mileage: Car.last.mileage)

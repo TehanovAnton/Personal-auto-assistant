@@ -1,11 +1,16 @@
 
-<%= simple_form_for(@order) do |f| %>
+<%= simple_form_for(order) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
+
+  <%= f.hidden_field 'service_id', value: service.id %>
+  <%= f.hidden_field 'work_id', value: work.id %>
+
+  <p><%= "#{service.organization.name}, #{service.name}, #{work.title}: #{price}$" %></p>
+
   <div class="form-inputs">
-    <%= f.input :organizations_services_works_price_id %>
-    <%= f.input :car_id %>
+    <%= f.input :car_id, as: :select, collection: @cars, label_method: :car_name, value_mathod: :id, include_blank: false %>
   </div>
 
   <div class="form-actions">

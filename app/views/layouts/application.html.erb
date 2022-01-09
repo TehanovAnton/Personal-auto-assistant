@@ -33,14 +33,8 @@
             </li>
 
             <li class="nav-item">
-              <%= link_to 'Orders', orders_path(current_user), class: "nav-link" %>
+              <%= link_to 'Organizations', organizations_path, class: "nav-link" %>
             </li>
-
-            <% if current_user&.service_owner? %>
-              <li class="nav-item">
-                <%= link_to 'Organizations', organizations_path, class: "nav-link" %>
-              </li>
-            <% end %>
             
           <% end %>
           

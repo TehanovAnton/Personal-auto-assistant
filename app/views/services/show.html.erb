@@ -24,7 +24,9 @@
 Works: 
 <ul>
   <% @service.works.each do |work| %>
-    <li><%= work.title %>: <%= work.price_in_organization(@organization.id) %>$ | <%= link_to 'edit', edit_work_path(work, service_id: @service.id) %></li>
+    <li><%= work.title %>: <%= work.price_in_organization(@organization.id) %>$ |
+    <%= link_to 'edit', edit_work_path(work, service_id: @service.id) %></li> |
+    <%= link_to 'make order', new_order_path(work_id: work.id, service_id: @service.id) %></li>
   <% end %>
 </ul>
 

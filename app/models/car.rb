@@ -34,4 +34,8 @@ class Car < ApplicationRecord
   def all_parts?
     parts.size == Part.count
   end
+
+  def car_name
+    "#{maker}, #{model}"
+  end
 end

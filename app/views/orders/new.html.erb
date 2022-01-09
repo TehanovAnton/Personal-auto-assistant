@@ -1,5 +1,9 @@
 <h1>New Order</h1>
 
-<%= render 'form', order: @order %>
+<%= render 'form', order: @order,
+                   cars: @cars,
+                   work: @work,
+                   service: @service,
+                   price: @price %>
 
 <%= link_to 'Back', orders_path %>
