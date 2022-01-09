@@ -2,13 +2,13 @@
 
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: %i[show edit destroy]
-  before_action :set_cities, only: %i[new edit]
+  before_action :set_cities, only: %i[new create edit]
   before_action -> { organization(organization_id: params[:id]) }, only: %i[create update]
 
   attr_accessor :service
 
   def index
-    @organizations = Organization.all
+    @organizations = Organization.all.page params[:page]
   end
 
   def show; end
@@ -24,6 +24,7 @@ class OrganizationsController < ApplicationController
   end
 
   def create
+    binding.pry
     if @organization.save
       redirect_to @organization, notice: 'Organization was successfully created.'
     else

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Organization < ApplicationRecord
+  paginates_per 2
+
   has_many :cities_organizations, dependent: :destroy
   has_many :cities, through: :cities_organizations
 
