@@ -6,14 +6,8 @@ class Service < ApplicationRecord
   has_many :services_works, dependent: :destroy
   has_many :works, through: :services_works
 
-  enum name: {
-    'technical inspection': 0,
-    'insurance company': 1,
-    'design salon': 3
-  }
-
   validates :name, :email, :phone_number, :address, presence: true
-  validates :name, uniqueness: true, inclusion: { in: Service.names.keys }
+  validates :name, uniqueness: true
 
   def name_in_one_word
     name.gsub(' ', '_')

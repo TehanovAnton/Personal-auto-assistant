@@ -19,6 +19,14 @@
   <strong>Phone number:</strong>
   <%= @service.phone_number %>
 </p>
+<hr>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
+Works: 
+<ul>
+  <% @service.works.each do |work| %>
+    <li><%= work.title %>: <%= work.price_in_organization(@organization.id) %>$</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_service_path(@service, organization_id: @organization.id) %> |
 <%= link_to 'Back', services_path %>

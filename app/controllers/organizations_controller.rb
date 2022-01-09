@@ -20,30 +20,7 @@ class OrganizationsController < ApplicationController
   def edit; end
 
   def services
-    @services = OrganizationsServicesWorksPrice.where(organization_id: params[:id])
-  end
-
-  def new_services
-    @services = Service.select { |s| s unless @organization.services.include?(s) }
-  end
-
-  def service_works
-    @services = choosen_services
-    @service_works = ServiceWork.all
-  end
-
-  def add_services
-    organization_new_services
-    @services.each do |service|
-      organization_new_services_works
-      service_works.each do |service_work|
-        OrganizationsServicesWorksPrice.create(organization_id: params[:id],
-                                               service_id: service.id,
-                                               service_work_id: service_work.id)
-      end
-    end
-
-    redirect_to organization_services_path(id: params[:id])
+    @services = @organization.services
   end
 
   def create

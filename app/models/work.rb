@@ -7,4 +7,8 @@ class Work < ApplicationRecord
   belongs_to :category
 
   validates :title, presence: true, uniqueness: true
+
+  def price_in_organization(organization_id)
+    organizations_works.find_by(organization_id: organization_id, work_id: id).price
+  end
 end

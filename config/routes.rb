@@ -19,9 +19,6 @@ Rails.application.routes.draw do
   resources :cars
 
   get '/organizations/:id/services', to: 'organizations#services', as: 'organization_services'
-  get '/organizations/:id/service', to: 'organizations#new_services', as: 'new_organization_services'
-  get '/organizations/:id/service/works', to: 'organizations#service_works', as: 'organization_service_works'
-  post '/organizations/:id/service', to: 'organizations#add_services', as: 'add_organization_services'
   resources :organizations
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
