@@ -28,6 +28,8 @@ gem 'kaminari'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'simple_form', '~> 5.1'
+gem 'sidekiq', '~> 6.3', '>= 6.3.1'
+gem 'sidekiq-cron'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

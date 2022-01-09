@@ -38,6 +38,6 @@ class Car < ApplicationRecord
   end
 
   def car_name
-    "#{maker}, #{model}"
+    "#{maker}, #{model}, #{vin}"
   end
 end

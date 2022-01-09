@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You recieved new order <%= @url %></h1>
+    <h2>
+      Order details:<br>
+    </h2>
+    <p>
+      Client: <%= @client.email %>
+    </p>
+    <p>
+      Car: <%= @car.car_name %>
+    <p>
+    </p>
+      Service: <%= @service.name %>
+    <p>
+    </p>
+      Requested work: <%= @work.title %>
+    <p>
+    </p>
+      Estimated price: <%= @order.price %>
+    </p>
+    <p>
+      Please check client comments for the order on this page: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

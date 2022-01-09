@@ -12,4 +12,10 @@ class OrderService
   def new_order
     Order.new(services_work_id: services_work.id, car_id: car.id, mileage: car.mileage)
   end
+
+  def mail_notifications(order)
+    Orders::ClientNotificationWorker.perform_async(order.id)
+    Orders::ServiceNotificationWorker.perform_async(order.id)
+    Orders::OrganizationNotificationWorker.perform_async(order.id)
+  end
 end

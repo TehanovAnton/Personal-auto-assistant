@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
     service = OrderService.new(service_id: order_params[:service_id], work_id: order_params[:work_id],
                                car_id: order_params[:car_id])
     if service.new_order.save
+      service.mail_notifications(Order.last)
       redirect_to orders_path(car_id: service.car.id), notice: 'Order was successfully created.'
     else
       render :new, status: :unprocessable_entity
