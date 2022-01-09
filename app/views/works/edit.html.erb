@@ -1,0 +1,8 @@
+<h1>Editing Work</h1>
+
+<%= render 'form', service_work: @service_work,
+                   url: work_path(@work, service_id: @service.id),
+                   method: :put,
+                   label: 'Update'%>
+
+<%= link_to 'Back', service_path(@service, organization_id: @service.organization.id) %>

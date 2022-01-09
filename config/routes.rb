@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :works
   root to: 'users#home'
 
   resources :orders, path: "orders/(:user_id)" 
