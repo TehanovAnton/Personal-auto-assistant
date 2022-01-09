@@ -4,8 +4,10 @@ class Organization < ApplicationRecord
   has_many :cities_organizations, dependent: :destroy
   has_many :cities, through: :cities_organizations
 
-  has_many :organizations_services_works_prices, dependent: :destroy
-  has_many :services, through: :organizations_services_works_prices
+  has_many :services, dependent: :destroy
+
+  has_many :organizations_works, dependent: :destroy
+  has_many :works, through: :organizations_works
 
   belongs_to :service_owner
 

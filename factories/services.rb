@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :service do
+    organization_id {}
     name {}
     email { Faker::Internet.safe_email }
     phone_number { Faker::PhoneNumber.cell_phone }

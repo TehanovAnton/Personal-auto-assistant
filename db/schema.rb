@@ -142,10 +142,12 @@ ActiveRecord::Schema.define(version: 2022_01_08_232604) do
 
   create_table "organizations_works", force: :cascade do |t|
     t.bigint "organization_id", null: false
+    t.bigint "work_id", null: false
     t.integer "price", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_organizations_works_on_organization_id"
+    t.index ["work_id"], name: "index_organizations_works_on_work_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -231,6 +233,7 @@ ActiveRecord::Schema.define(version: 2022_01_08_232604) do
   add_foreign_key "organizations_services_works_prices", "services", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "works", column: "service_work_id", on_delete: :cascade
   add_foreign_key "organizations_works", "organizations"
+  add_foreign_key "organizations_works", "works"
   add_foreign_key "services", "organizations"
   add_foreign_key "services_works", "services"
   add_foreign_key "services_works", "works"

@@ -14,8 +14,5 @@
 FactoryBot.create(:user_with_car, email: 'with_car@gmail.com')
 FactoryBot.create(:user, role: 'service_owner', email: 'tehanovanton@gmail.com')
 
+Category.create(name: 'cleaning')
 FactoryBot.create(:organization_with_service, name: 'apolo')
-
-FactoryBot.create(:order,
-                  organizations_services_works_price_id: OrganizationsServicesWorksPrice.last.id,
-                  car_id: Car.last.id)

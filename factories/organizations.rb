@@ -11,13 +11,10 @@ FactoryBot.define do
 
     factory :organization_with_service do
       after(:create) do |organization|
-        Service.names.each_key do |service|
-          FactoryBot.create(:service, name: service)
-          FactoryBot.create(:service_work, title: "service_#{Time.current.strftime('%Y-%H:%M:%S:%L')}")
-          OrganizationsServicesWorksPrice.create(organization_id: organization.id,
-                                                 service_id: Service.last.id,
-                                                 service_work_id: ServiceWork.last.id)
-        end
+        service = create(:service, name: 'technical inspection', organization_id: organization.id)
+        work = create(:work, title: 'repare engine', category_id: Category.last.id)
+        service.works << work
+        organization.works << work
       end
     end
   end

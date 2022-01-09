@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Service < ApplicationRecord
-  has_many :organizations_services_works_prices, dependent: :destroy
-  has_many :organizations, through: :organizations_services_works_prices
-  has_many :service_works, through: :organizations_services_works_prices
+  belongs_to :organization
+
+  has_many :services_works, dependent: :destroy
+  has_many :works, through: :services_works
 
   enum name: {
     'technical inspection': 0,
