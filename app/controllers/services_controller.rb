@@ -6,20 +6,26 @@ class ServicesController < ApplicationController
 
   def index
     @services = @organization.services.page params[:page]
+    authorize @services
   end
 
   def show
     @comments = @service.comments.page params[:page]
+    authorize @service
   end
 
   def new
     @service = Service.new
+    authorize @service
   end
 
-  def edit; end
+  def edit
+    authorize @service
+  end
 
   def create
     @service = Service.new(service_params)
+    authorize @service
 
     if @service.save
       redirect_to service_path(@service, organization_id: @service.organization.id),
@@ -30,6 +36,7 @@ class ServicesController < ApplicationController
   end
 
   def update
+    authorize @service
     if @service.update(service_params)
       redirect_to service_path(@service, organization_id: @service.organization.id),
                   notice: 'Service was successfully updated.'
@@ -39,6 +46,7 @@ class ServicesController < ApplicationController
   end
 
   def destroy
+    authorize @service
     @service.destroy
     respond_to do |format|
       format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }

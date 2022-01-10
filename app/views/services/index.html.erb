@@ -7,4 +7,4 @@
   <%= paginate @services %>
 </ul>
 
-<%= link_to 'Add service', new_service_path(organization_id: @organization) %>
+<%= link_to 'Add service', new_service_path(organization_id: @organization) if current_user.service_owner? || current_user.admin? %>
