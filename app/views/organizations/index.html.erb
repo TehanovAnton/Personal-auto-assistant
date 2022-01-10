@@ -21,9 +21,9 @@
         <td><%= organization.address %></td>
         <td><%= organization.name %></td>
         <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+        <td><%= link_to 'Edit', edit_organization_path(organization) if current_user.service_owner? %></td>
         <td><%= link_to 'Services', services_path(organization_id: organization.id) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } if current_user.service_owner? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,5 +31,5 @@
 
 <br>
 
-<%= link_to 'New Organization', new_organization_path %>
+<%= link_to 'New Organization', new_organization_path if current_user.service_owner?%>
 <%= paginate @organizations %>

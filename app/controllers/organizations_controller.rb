@@ -9,21 +9,28 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all.page params[:page]
+    authorize @organizations
   end
 
-  def show; end
+  def show
+    authorize @organization
+  end
 
   def new
     @organization = Organization.new
+    authorize @organization
   end
 
-  def edit; end
+  def edit
+    authorize @organization
+  end
 
   def services
     @services = @organization.services
   end
 
   def create
+    authorize @organization
     if @organization.save
       redirect_to @organization, notice: 'Organization was successfully created.'
     else
@@ -32,6 +39,7 @@ class OrganizationsController < ApplicationController
   end
 
   def update
+    authorize @organization
     if @organization.update(organization_params)
       redirect_to @organization, notice: 'Organization was successfully updated.'
     else
@@ -40,6 +48,7 @@ class OrganizationsController < ApplicationController
   end
 
   def destroy
+    authorize @organization
     if @organization.delete
       redirect_to organizations_url, notice: 'Organization was successfully destroyed.'
     else
