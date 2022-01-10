@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :services
 
+  post '/search', to: 'search#search'
+
   get '/cars_owners_documents/:user_id/new_document', to: 'cars_owners_documents#new_document', as: 'new_document'
   put '/cars_owners_documents/:user_id/add_document', to: 'cars_owners_documents#add_document', as: 'add_document'
   resources :cars_owners_documents

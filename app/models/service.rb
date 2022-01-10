@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+require 'elasticsearch/model'
+
 class Service < ApplicationRecord
+  include Elasticsearch::Model
+
   paginates_per 3
 
   belongs_to :organization
@@ -34,3 +38,6 @@ class Service < ApplicationRecord
                                                 service_work_id: service_work_id).price
   end
 end
+
+Service.__elasticsearch__.create_index!
+Service.import

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WorksController < ApplicationController
-  before_action :set_work, :set_service, only: %i[edit update destroy]
+  before_action :set_work, :set_service, only: %i[show edit update destroy]
 
   def new
     @work = Work.new

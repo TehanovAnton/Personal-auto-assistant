@@ -20,6 +20,18 @@
           </li>
 
           <% if current_user %>
+            <li>
+              <%= form_with url: search_path, local: true, model: @text do |form| %>
+                <div class="form-floating">
+                  <%= form.text_field :text, class: 'form-control', id: 'text', required: true %>
+                  <%= form.label 'Search', for: 'text' %>
+                  <%= form.submit 'Searh', id: 'search_button', hidden: false %>
+                </div>
+              <% end %>
+
+              <div id='results' style='position: relative; z-index: 2;'></div>
+            </li>
+
             <li class="nav-item">
               <%= link_to 'Profile', user_path(current_user), class: "nav-link" %>
             </li>

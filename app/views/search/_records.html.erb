@@ -1,0 +1,14 @@
+<div>
+  <% @results.each do |record| %>
+  
+    <% if record.class.name.equal? Service.name  %>
+
+      <p> <%= link_to record.name, service_path(record) %> </p>
+
+    <% elsif record.class.name.equal? Work.name  %>
+    
+      <p> <%= link_to record.title, work_path(record) %> </p>
+
+    <% end %>
+  <% end %>
+</div>
