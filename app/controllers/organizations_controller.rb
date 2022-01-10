@@ -24,7 +24,6 @@ class OrganizationsController < ApplicationController
   end
 
   def create
-    binding.pry
     if @organization.save
       redirect_to @organization, notice: 'Organization was successfully created.'
     else

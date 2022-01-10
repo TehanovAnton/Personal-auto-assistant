@@ -12,13 +12,13 @@
       Client: <%= @client.email %>
     </p>
     <p>
-      Car: <%= @car.car_name %>
+      Car: <%= @order.car.car_name %>
     <p>
     </p>
-      Service: <%= @service.name %>
+      Service: <%= @order.service.name %>
     <p>
     </p>
-      Requested work: <%= @work.title %>
+      Requested work: <%= @order.work.title %>
     <p>
     </p>
       Estimated price: <%= @order.price %>

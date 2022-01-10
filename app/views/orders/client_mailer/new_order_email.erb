@@ -9,13 +9,13 @@
       Order details:<br>
     </h2>
     <p>
-      Car: <%= @car.car_name %>
+      Car: <%= @order.car.car_name %>
     <p>
     </p>
-      Requested service: <%= @service.name %>
+      Requested service: <%= @order.service.name %>
     <p>
     </p>
-      Requested work: <%= @work.title %>
+      Requested work: <%= @order.work.title %>
     <p>
     </p>
       Estimated price: <%= @order.price %>

@@ -1,1 +1,2 @@
-Sidekiq::Cron::Job.create(name: 'Document worker - every day', cron: '0 12 * * *', class: DocumentWorker.class.to_s)
+Sidekiq::Cron::Job.create(name: 'Document worker - every day', cron: '0 12 * * *', class: 'DocumentWorker')
+Sidekiq::Cron::Job.create(name: 'Document worker - every day', cron: '0 12 * * *', class: 'PartWorker')

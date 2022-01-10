@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def create
-    if current_user.comments.create(comment_params)
-      redirect_back(fallback_location: root_path)
-    end
+    redirect_back(fallback_location: root_path) if current_user.comments.create(comment_params)
   end
 
   private

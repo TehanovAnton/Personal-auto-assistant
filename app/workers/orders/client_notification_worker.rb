@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Orders
   class ClientNotificationWorker
     include Sidekiq::Worker
