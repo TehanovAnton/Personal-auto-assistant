@@ -7,31 +7,34 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    authorize @users
   end
 
-  def show; end
+  def show
+    authorize @user
+  end
 
   def new
     @user = User.new
+    authorize @user
   end
 
-  def edit; end
+  def edit
+    authorize @user
+  end
 
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    authorize @user
+    if @user.save
+      redirect_to @user, notice: 'User was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
+    authorize @user
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -40,6 +43,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
   end

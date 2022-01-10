@@ -35,6 +35,10 @@
             <li class="nav-item">
               <%= link_to 'Organizations', organizations_path, class: "nav-link" %>
             </li>
+
+            <li class="nav-item">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
             
           <% end %>
           
