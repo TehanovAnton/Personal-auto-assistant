@@ -10,5 +10,12 @@ module Orders
 
       mail(to: @client.email, subject: 'New Order Notification | PersonalAutoAssistant')
     end
+
+    def document_end_term_of_validity
+      @client = params[:user]
+      @document = params[:document]
+
+      mail(to: @client.email, subject: 'Document term of validity | PersonalAutoAssistant')
+    end
   end
 end
