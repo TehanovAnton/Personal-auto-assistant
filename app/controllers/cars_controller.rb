@@ -6,20 +6,27 @@ class CarsController < ApplicationController
 
   def index
     @cars = Car.all.page params[:page]
+    authorize @cars
   end
 
-  def show; end
+  def show
+    authorize @car
+  end
 
   def new
-    @car_form = CarForm.new(car: FactoryBot.build(:car))
+    car = FactoryBot.build(:car)
+    @car_form = CarForm.new(car: car)
+    authorize car
   end
 
   def edit
     @car_form = CarForm.new(car: @car)
+    authorize @car
   end
 
   def create
     @car = Car.new(car_params)
+    authorize @car
     if @car.save
       redirect_to @car, notice: 'Car was successfully created.'
     else
@@ -28,6 +35,7 @@ class CarsController < ApplicationController
   end
 
   def update
+    authorize @car
     if @car.update(car_params)
       redirect_to @car, notice: 'Car was successfully updated.'
     else
@@ -36,6 +44,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    authorize @car
     @car.delete
     redirect_to cars_url, notice: 'Car was successfully destroyed.'
   end
