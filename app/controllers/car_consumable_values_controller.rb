@@ -5,11 +5,16 @@ class CarConsumableValuesController < ApplicationController
 
   def index
     @car_consumable_values = CarConsumableValue.where(car_id: params[:car_id])
+    authorize @car_consumable_values
   end
 
-  def edit; end
+  def edit
+    authorize @car_consumable_value
+  end
 
   def update
+    authorize @car_consumable_value
+
     if @car_consumable_value.update(car_consumable_value_params)
       redirect_to car_consumable_values_path(car_id: car_consumable_value_params[:car_id]),
                   notice: 'Car consumable value was successfully updated.'
