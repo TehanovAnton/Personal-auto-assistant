@@ -52,6 +52,7 @@ group :development, :test do
   gem 'pry-nav'
   gem 'pry-remote'
   gem 'rubocop-rails', require: false
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
 end
 
 group :development do
