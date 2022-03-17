@@ -18,6 +18,7 @@ FactoryBot.define do
 
     after(:create) do |user|
       user.confirm
+      binding.pry
 
       Document.names.each_key do |key|
         user.documents.push(create(:document, name: key))

@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-remote'
   gem 'rubocop-rails', require: false
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'shoulda-matchers', '~> 5.1'
 end
 
 group :development do
