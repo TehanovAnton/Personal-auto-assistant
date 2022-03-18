@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe "GET" do
+  describe 'GET' do
     let(:user) { FactoryBot.create(:user, role: :admin) }
     before { sign_in user }
 
@@ -32,6 +32,3 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 end
-
-
-
