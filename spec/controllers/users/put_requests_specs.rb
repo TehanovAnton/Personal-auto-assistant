@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'PUT' do
-    let(:user) { FactoryBot.create(:user) }
     before { sign_in user }
+    let(:user) { FactoryBot.create(:user) }
 
     describe '#update' do
       let(:params) do
