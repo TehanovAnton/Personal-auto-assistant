@@ -2,7 +2,6 @@
 
 require 'elasticsearch/model'
 
-
 class Work < ApplicationRecord
   include Elasticsearch::Model
 

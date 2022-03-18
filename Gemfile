@@ -23,7 +23,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
@@ -31,10 +35,6 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'sidekiq', '~> 6.3', '>= 6.3.1'
 gem 'sidekiq-cron'
 gem 'simple_form', '~> 5.1'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'jquery-rails'
-gem 'bootstrap'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -51,9 +51,13 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
-  gem 'rubocop-rails', require: false
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'rubocop-rails', require: false
   gem 'shoulda-matchers', '~> 5.1'
+end
+
+group :test do
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 group :development do
