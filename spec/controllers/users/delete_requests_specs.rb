@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  describe 'DELETE' do
+  describe '#destroy' do
     before { sign_in user }
-    let(:user) { FactoryBot.create(:user, role: :admin) }
+    let(:user) { create(:user, role: :admin) }
 
     context 'existent user' do
       before { delete :destroy, params: { id: user.id } }
