@@ -72,8 +72,8 @@ class CarsController < ApplicationController
 
   def new_car_parts
     parts_params = params.require(:car).permit(parts: [])
-    parts_params = parts_params.to_h[:parts].map { |id| id.to_i if id.present? }.uniq
-    Part.select { |p| p if parts_params.include?(p.id) }
+    new_parts_ids = parts_params.to_h[:parts].map { |id| id.to_i if id.present? }.uniq
+    Part.select { |p| p if @car.parts.exclude?(p) && new_parts_ids.include?(p.id) }
   end
 
   def fuel_types

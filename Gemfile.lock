@@ -95,6 +95,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    docile (1.4.0)
     elasticsearch (7.17.1)
       elasticsearch-api (= 7.17.1)
       elasticsearch-transport (= 7.17.1)
@@ -337,6 +338,12 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     slop (3.6.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -406,6 +413,7 @@ DEPENDENCIES
   sidekiq (~> 6.3, >= 6.3.1)
   sidekiq-cron
   simple_form (~> 5.1)
+  simplecov (~> 0.21.2)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
