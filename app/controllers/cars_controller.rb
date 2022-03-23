@@ -39,7 +39,7 @@ class CarsController < ApplicationController
     if @car.update(car_params)
       redirect_to @car, notice: 'Car was successfully updated.'
     else
-      redirect_to :edit, status: :unprocessable_entity
+      redirect_to :edit_car, status: :unprocessable_entity
     end
   end
 

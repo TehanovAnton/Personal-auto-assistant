@@ -3,6 +3,9 @@ require: rubocop-rails
 Style/Documentation:
   Enabled: false
 
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - config/**/*

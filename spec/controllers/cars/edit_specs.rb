@@ -22,5 +22,5 @@ RSpec.describe CarsController, type: :controller do
       car_form = assigns(:car_form)
       expect(car_form).not_to be_nil
     end
-  end 
+  end
 end
