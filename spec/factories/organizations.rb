@@ -6,7 +6,6 @@ FactoryBot.define do
     email { Faker::Internet.safe_email }
     phone_number { Faker::PhoneNumber.cell_phone }
     address { "#{Faker::Address.city}, #{Faker::Address.street_name}, #{Faker::Address.building_number}" }
-
     service_owner_id { ServiceOwner.last.id }
 
     factory :organization_with_service_and_work do
