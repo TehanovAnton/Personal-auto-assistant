@@ -10,6 +10,7 @@ class OrderService
   end
 
   def new_order
+    binding.pry
     Order.new(services_work_id: services_work.id, car_id: car.id, mileage: car.mileage)
   end
 
