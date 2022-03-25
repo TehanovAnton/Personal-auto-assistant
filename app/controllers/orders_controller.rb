@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update destroy]
 
   def index
-    @orders = Order.where(car_id: params[:car_id]).page params[:page]
+    @orders = Order.includes(:services_work, :car).where(car_id: params[:car_id]).page params[:page]
   end
 
   def show

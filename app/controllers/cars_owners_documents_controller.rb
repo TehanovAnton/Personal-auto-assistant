@@ -5,7 +5,7 @@ class CarsOwnersDocumentsController < ApplicationController
   before_action :set_user, only: %i[new_document add_document update]
 
   def index
-    @cars_owners_documents = CarsOwnersDocument.where(user_id: params[:user_id])
+    @cars_owners_documents = CarsOwnersDocument.includes(:document).where(user_id: params[:user_id])
   end
 
   def new_document

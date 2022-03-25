@@ -4,7 +4,7 @@ class CarConsumableValuesController < ApplicationController
   before_action :set_car_consumable_value, only: %i[edit update]
 
   def index
-    @car_consumable_values = CarConsumableValue.where(car_id: params[:car_id])
+    @car_consumable_values = CarConsumableValue.where(car_id: params[:car_id]).includes(:consumable)
     authorize @car_consumable_values
   end
 
