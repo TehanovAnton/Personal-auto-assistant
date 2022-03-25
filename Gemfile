@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'shoulda-matchers', '~> 5.1'
   gem 'simplecov', '~> 0.21.2'
+  gem 'bullet'
 end
 
 group :test do
