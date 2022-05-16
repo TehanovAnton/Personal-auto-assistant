@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: organizations
+#
+#  id               :bigint           not null, primary key
+#  email            :string           not null
+#  phone_number     :string           not null
+#  address          :string           not null
+#  name             :string           not null
+#  service_owner_id :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
 class Organization < ApplicationRecord
   paginates_per 2
 

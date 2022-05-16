@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: organizations_services_works_prices
+#
+#  id              :bigint           not null, primary key
+#  organization_id :integer          not null
+#  service_id      :integer          not null
+#  service_work_id :integer          not null
+#  price           :integer          default(1), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class OrganizationsServicesWorksPrice < ApplicationRecord
   belongs_to :organization
   belongs_to :service
