@@ -7,7 +7,7 @@ class CarForm
                 :engine_volume, :mileage,
                 :body_type, :maker, :vin,
                 :fuel_type, :transmission_type,
-                :documents, :parts
+                :documents, :parts, :photo
 
   def initialize(car:)
     @model = car.model
@@ -19,5 +19,6 @@ class CarForm
     @vin = car.vin
     @fuel_type = car.fuel_type
     @transmission_type = car.transmission_type
+    @photo = car.photo
   end
 end

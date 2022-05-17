@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.input :photo, as: :file %>
+
   <%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.input :model, required: true %>

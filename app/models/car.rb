@@ -21,6 +21,8 @@
 class Car < ApplicationRecord
   paginates_per 2
 
+  has_one_attached :photo
+
   has_many :cars_parts, dependent: :destroy
   has_many :parts, through: :cars_parts
 
