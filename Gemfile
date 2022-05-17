@@ -9,7 +9,7 @@ ruby '3.0.1'
 gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
-# Use Puma as the app server
+# Use Puma as the app server  
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
@@ -35,6 +35,12 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'sidekiq', '~> 6.3', '>= 6.3.1'
 gem 'sidekiq-cron'
 gem 'simple_form', '~> 5.1'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'pexels', '~> 0.4.0'  
+gem 'image_processing', '~> 1.12', '>= 1.12.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

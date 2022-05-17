@@ -28,6 +28,8 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     authorize @car
     if @car.save
+      binding.pry
+      @car.photo.attach(car_params[:photo])
       redirect_to @car, notice: 'Car was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -67,7 +69,7 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car_form).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
-                                     :transmission_type, :maker, :vin, :user_id)
+                                     :transmission_type, :maker, :vin, :user_id, :photo)
   end
 
   def new_car_parts
