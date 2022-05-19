@@ -41,7 +41,7 @@ gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
 gem 'jquery-rails'
 gem 'bootstrap'
 gem 'pexels', '~> 0.4.0'  
-gem 'image_processing', '~> 1.12', '>= 1.12.2'
+gem 'image_processing', '~> 1.2'  
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
