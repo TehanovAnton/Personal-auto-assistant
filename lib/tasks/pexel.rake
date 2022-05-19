@@ -54,6 +54,10 @@ namespace :pexel do
   desc "TODO"
   task download: :environment do
     pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
-    pexels_service.upload
+
+    3.times do |i|
+      source = pexels_service.photo_src(i, )
+      pexels_service.upload(source)
+    end
   end
 end

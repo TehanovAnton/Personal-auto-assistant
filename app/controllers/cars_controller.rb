@@ -28,8 +28,6 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     authorize @car
     if @car.save
-      binding.pry
-      @car.photo.attach(car_params[:photo])
       redirect_to @car, notice: 'Car was successfully created.'
     else
       render :new, status: :unprocessable_entity
