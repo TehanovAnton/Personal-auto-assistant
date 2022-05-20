@@ -38,7 +38,7 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
-  gem 'rubocop-rails', require: false
+  gem 'rubocop-rails'
 end
 
 group :development do
