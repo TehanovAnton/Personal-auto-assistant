@@ -5,13 +5,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
-gem 'rails', '~> 6.1.4'
+gem 'jbuilder', '~> 2.7'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
+gem 'rails', '~> 6.1.4'
 gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.7'
+gem 'webpacker', '~> 5.0'
 
 gem 'bootstrap'
 gem 'devise', '~> 4.8', '>= 4.8.1'
@@ -38,14 +38,14 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
-  gem 'rubocop-rails'
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
-  gem 'web-console', '>= 4.1.0'
   gem 'annotate', '~> 3.2'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'web-console', '>= 4.1.0'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
