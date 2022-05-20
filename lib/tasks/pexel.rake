@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require 'pexels'
 
@@ -25,8 +26,8 @@ class PexelsService
   end
 
   def upload(image_uri = photo_src)
-    URI.open(image_uri) do |f| 
-      download(f, image_name(f.base_uri.to_s)) 
+    URI.open(image_uri) do |f|
+      download(f, image_name(f.base_uri.to_s))
     end
   end
 
@@ -47,16 +48,15 @@ class PexelsService
   def image_name(image_uri)
     image_uri.split('/').last
   end
-
 end
 
 namespace :pexel do
-  desc "TODO"
+  desc 'TODO'
   task download: :environment do
     pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
 
     3.times do |i|
-      source = pexels_service.photo_src(i, )
+      source = pexels_service.photo_src(i)
       pexels_service.upload(source)
     end
   end
