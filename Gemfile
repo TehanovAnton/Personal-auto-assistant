@@ -23,7 +23,11 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'omniauth-google-oauth2', '~> 1.0'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
@@ -31,10 +35,6 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'sidekiq', '~> 6.3', '>= 6.3.1'
 gem 'sidekiq-cron'
 gem 'simple_form', '~> 5.1'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'jquery-rails'
-gem 'bootstrap'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -59,6 +59,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  gem 'annotate', '~> 3.2'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

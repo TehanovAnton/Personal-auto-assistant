@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: services
+#
+#  id              :bigint           not null, primary key
+#  name            :string           default("0"), not null
+#  email           :string           not null
+#  phone_number    :string           not null
+#  address         :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :bigint           not null
+#
 require 'elasticsearch/model'
 
 class Service < ApplicationRecord

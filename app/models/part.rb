@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: parts
+#
+#  id         :bigint           not null, primary key
+#  name       :integer          default("engine"), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Part < ApplicationRecord
   has_many :car_parts, dependent: :destroy
   has_many :cars, through: :car_parts
