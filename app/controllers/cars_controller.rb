@@ -67,7 +67,8 @@ class CarsController < ApplicationController
 
   def car_params
     params.require(:car_form).permit(:model, :year_production, :engine_volume, :mileage, :body_type, :fuel_type,
-                                     :transmission_type, :maker, :vin, :user_id, :photo)
+                                     :transmission_type, :maker, :vin, :user_id,
+                                     :photo)
   end
 
   def new_car_parts
