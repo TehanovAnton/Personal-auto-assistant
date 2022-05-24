@@ -27,6 +27,7 @@ gem 'bootstrap'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
+gem 'graphql'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'omniauth-google-oauth2', '~> 1.0'
@@ -35,11 +36,6 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'sidekiq', '~> 6.3', '>= 6.3.1'
 gem 'sidekiq-cron'
 gem 'simple_form', '~> 5.1'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: 'main'
-gem 'jquery-rails'
-gem 'bootstrap'
-gem "graphql"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -71,5 +67,5 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'graphiql-rails', github: 'rmosolgo/graphiql-rails', group: :development
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-gem 'graphiql-rails', github:'rmosolgo/graphiql-rails', group: :development
