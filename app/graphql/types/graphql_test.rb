@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 query_string = "
   user(id: 1) {
@@ -8,4 +9,4 @@ query_string = "
   }
 "
 
-p Schema.execute(query_string)
+Rails.logger.debug Schema.execute(query_string)
