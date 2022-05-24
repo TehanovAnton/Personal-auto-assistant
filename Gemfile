@@ -52,7 +52,6 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
-  gem 'rubocop-rails', require: false
 end
 
 group :development do
@@ -63,6 +62,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rubocop-rails', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 end
 
