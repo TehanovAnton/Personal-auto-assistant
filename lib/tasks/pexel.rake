@@ -31,8 +31,8 @@ class PexelsService
     end
   end
 
-  def photo_name
-    @photo_name ||= photo_path.split('/').last
+  def photo_name(index = 0, variation: 'original')
+    @photo_name ||= photo_path(index, variation: variation).split('/').last
   end
 
   private
@@ -52,12 +52,36 @@ end
 
 namespace :pexel do
   desc 'TODO'
-  task download: :environment do
+
+  task download: :environment do |t|  
     pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
 
     3.times do |i|
       source = pexels_service.photo_src(i)
       pexels_service.upload(source)
+    end
+  end
+
+  task :random_attach, [:count] => :environment do |t, args|
+    args.with_defaults(count: 1) if args.empty?
+    
+    pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
+    cars_without_photo = Car.select { |car| !car.photo.attached? }
+
+    upload = proc do |index|
+      source = pexels_service.photo_src(index)
+      pexels_service.upload(source)
+    end 
+
+    if !cars_without_photo.empty?
+      puts args.counts
+      args.count.times do |i|
+        upload.call(i)
+        
+        photo_file = File.open(pexels_service.photo_path(1))
+        photo_name = pexels_service.photo_name(1)
+        cars_without_photo.sample.photo.attach(io: photo_file, filename: photo_name)
+      end
     end
   end
 end
