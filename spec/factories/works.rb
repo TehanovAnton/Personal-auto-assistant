@@ -3,5 +3,6 @@
 FactoryBot.define do
   factory :work do
     title {}
+    category_id {}
   end
 end

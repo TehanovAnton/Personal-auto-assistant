@@ -51,7 +51,14 @@ group :development, :test do
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rails', require: false
+  gem 'shoulda-matchers', '~> 5.1'
+  gem 'simplecov', '~> 0.21.2'
+end
+
+group :test do
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 group :development do
