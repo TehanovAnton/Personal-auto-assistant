@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <% photos.each do |photo| %>
+    <%= image_tag photo, size: '100x100' %>
+    <%= radio_button_tag :photo, photo, false %>
+  <% end %>
+  <br>
+
   <%= form.input :photo, as: :file %>
 
   <% if @car_form.photo.attached? %>

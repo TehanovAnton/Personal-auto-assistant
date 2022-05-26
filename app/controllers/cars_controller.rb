@@ -14,6 +14,13 @@ class CarsController < ApplicationController
   end
 
   def new
+    pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
+    @photos = []
+    3.times do |i| 
+      photo = pexels_service.photos[i].src['original']
+      @photos.push(photo)
+    end
+
     car = FactoryBot.build(:car)
     @car_form = CarForm.new(car: car)
     authorize car
@@ -26,8 +33,8 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
-    authorize @car
     if @car.save
+      attach_photo(params[:photo])
       redirect_to @car, notice: 'Car was successfully created.'
     else
       render :new, status: :unprocessable_entity
@@ -60,6 +67,18 @@ class CarsController < ApplicationController
   end
 
   private
+
+  def attach_photo(photo_src)
+    pexels_service = PexelsService.new
+
+    pexels_service.upload(photo_src)
+
+    photo_name = pexels_service.photo_name_by_src(photo_src)
+    photo_path = pexels_service.photo_path_by_src(photo_src)
+    photo_file = File.open(photo_path)
+
+    @car.photo.attach(io: photo_file, filename: photo_name)
+  end
 
   def set_car
     @car = Car.find(params[:id])
