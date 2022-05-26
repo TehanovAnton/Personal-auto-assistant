@@ -4,9 +4,9 @@ require 'pexels'
 require './app/services/pexels_service.rb'
 
 namespace :pexel do
-  desc 'TODO'
+  desc 'Tasks under this namespace works with data forom Pexels API'
 
-  task download: :environment do |t|  
+  task download_few_photos: :environment do |t|  
     pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
 
     3.times do |i|
@@ -15,7 +15,7 @@ namespace :pexel do
     end
   end
 
-  task :random_attach, [:count] => :environment do |t, args|
+  task :attach_photo_to_random_cars, [:count] => :environment do |t, args|
     args.with_defaults(count: 1) if args.empty?
     pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
     cars_without_photo = Car.select { |car| !car.photo.attached? }

@@ -17,8 +17,7 @@ class PexelsService
       description,
       size: size,
       orientation: orientation
-    )
-           .photos
+    ).photos
   end
 
   def photo_src(index = 0, variation: 'original')
