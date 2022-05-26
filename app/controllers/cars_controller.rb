@@ -2,7 +2,11 @@
 
 class CarsController < ApplicationController
   before_action :set_car, only: %i[show edit update destroy parts new_part add_part]
-  before_action :fuel_types, :transmission_types, :documents, only: %i[new edit]
+  before_action :fuel_types,
+                :set_photos,
+                :transmission_types,
+                :documents,
+                only: %i[new edit]
 
   def index
     @cars = Car.all.page params[:page]
@@ -14,13 +18,6 @@ class CarsController < ApplicationController
   end
 
   def new
-    pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
-    @photos = []
-    3.times do |i| 
-      photo = pexels_service.photos[i].src['original']
-      @photos.push(photo)
-    end
-
     car = FactoryBot.build(:car)
     @car_form = CarForm.new(car: car)
     authorize car
@@ -67,6 +64,19 @@ class CarsController < ApplicationController
   end
 
   private
+
+  def set_photos
+    pexels_service = PexelsService.new(
+      'bmw auto',
+      size: :medium,
+      orientation: :square
+    )
+    @photos = []
+    3.times do |i|
+      photo = pexels_service.photos[i].src['original']
+      @photos.push(photo)
+    end
+  end
 
   def attach_photo(photo_src)
     pexels_service = PexelsService.new

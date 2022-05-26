@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 class PexelsService
   attr_reader :description, :size, :orientation
 
-  def initialize(description = "", size: 0, orientation: "")
+  def initialize(description = '', size: 0, orientation: '')
     @client = Pexels::Client.new(ENV['PEXEL_API_KEY'])
     @description = description
     @size = size
@@ -11,7 +13,12 @@ class PexelsService
   end
 
   def photos
-    @photos ||= @client.photos.search(description, size: size, orientation: orientation).photos
+    @client.photos.search(
+      description,
+      size: size,
+      orientation: orientation
+    )
+           .photos
   end
 
   def photo_src(index = 0, variation: 'original')
@@ -38,7 +45,7 @@ class PexelsService
   end
 
   def upload(image_uri = photo_src)
-    URI.open(image_uri) do |f|
+    URI.parse(image_uri).open do |f|
       download(f, image_name(f.base_uri.to_s))
     end
   end
