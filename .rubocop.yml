@@ -4,6 +4,9 @@ Style/Documentation:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Metrics/BlockLength:
+  Enabled: false
+
 AllCops:
   Exclude:
     - config/**/*

@@ -49,6 +49,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
   gem 'figaro', '~> 1.2'
+  gem 'graphiql-rails', github: 'rmosolgo/graphiql-rails'
   gem 'pry', '~> 0.14.1'
   gem 'pry-nav'
   gem 'pry-remote'
@@ -66,10 +67,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop-rails', require: false
   gem 'web-console', '>= 4.1.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'graphiql-rails', github: 'rmosolgo/graphiql-rails', group: :development
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
