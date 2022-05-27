@@ -12,7 +12,7 @@
   <% end %>
 
   <% photos.each do |photo| %>
-    <%= image_tag photo, class: :car_photo %>
+    <%= image_tag photo, class: 'car-photo' %>
     <%= radio_button_tag :photo, photo, false %>
   <% end %>
   <br>
@@ -20,7 +20,7 @@
   <%= form.input :photo, as: :file %>
 
   <% if @car_form.photo.attached? %>
-    <%= image_tag @car_form.photo, class: :car_photo %>
+    <%= image_tag @car_form.photo, class: 'car-photo' %>
   <% end %>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
