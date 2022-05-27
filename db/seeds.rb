@@ -8,7 +8,7 @@ FactoryBot.create(:user_with_car, role: 'service_owner', email: 'tehanovanton@gm
 
 Category.create(name: 'cleaning')
 
-# Create organization with service and work 
+# Create organization with service and work
 FactoryBot.create(:organization_with_service_and_work, name: 'apolo')
 
 FactoryBot.create(:user, role: :admin)

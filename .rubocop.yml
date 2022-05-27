@@ -1,9 +1,10 @@
-require: rubocop-rails
-
 Style/Documentation:
   Enabled: false
 
 Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/BlockLength:
   Enabled: false
 
 AllCops:
@@ -12,3 +13,4 @@ AllCops:
     - db/migrate/*
     - db/schema.rb
     - bin/**/*
+    - app/controllers/graphql_controller.rb

@@ -7,7 +7,7 @@ RSpec.describe CarsController, type: :controller do
     let(:user) { create(:user) }
     let(:car) do
       create(:car, user_id: user.id, engine_volume: 1,
-             fuel_type: :petrol, maker: 'Honda')
+                   fuel_type: :petrol, maker: 'Honda')
     end
     let(:params) do
       {
@@ -25,25 +25,24 @@ RSpec.describe CarsController, type: :controller do
 
     context 'valid params' do
       it 'permit params' do
-        should permit(:model, :year_production, :engine_volume, :mileage, 
+        should permit(:model, :year_production, :engine_volume, :mileage,
                       :body_type, :fuel_type, :transmission_type, :maker,
                       :vin, :user_id)
-        .for(:update, params: params)
-        .on(:car_form)
+          .for(:update, params: params)
+          .on(:car_form)
       end
 
       it 'update car' do
         expect { put :update, params: params }.to change { car.reload.maker }.from('Honda').to('BMW')
       end
-      
+
       it 'redirect to show' do
         put :update, params: params
         should redirect_to(action: :show)
       end
-
     end
-  
-    context 'invalid params' do 
+
+    context 'invalid params' do
       let(:params) do
         {
           car_form: { user_id: user.id, engine_volume: 0 },
@@ -53,7 +52,7 @@ RSpec.describe CarsController, type: :controller do
 
       it 'not cahnge params' do
         expect { put :update, params: params }
-        .not_to change { car }
+          .not_to change { car }
       end
 
       it 'has http_status' do

@@ -19,7 +19,7 @@ FactoryBot.define do
 
     factory :organization_with_service do
       after(:create) do |organization|
-        service = create(:service, name: 'technical inspection', 
+        create(:service, name: 'technical inspection',
                          organization_id: organization.id)
       end
     end

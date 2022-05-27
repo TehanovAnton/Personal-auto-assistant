@@ -15,25 +15,25 @@ RSpec.describe OrdersController, type: :controller do
     before { sign_in service_owner }
 
     context 'valid params' do
-      let (:params) do
+      let(:params) do
         {
           order: {
             service_id: service.id,
             work_id: work.id,
             car_id: service_owner.cars.first.id
           }
-        } 
+        }
       end
 
       it 'should permit params' do
         should permit(:service_id, :work_id, :car_id)
-        .for(:create, params: params)
-        .on(:order)
+          .for(:create, params: params)
+          .on(:order)
       end
 
       it 'should create new object' do
         expect { post :create, params: params }
-        .to change { Order.count }.by(1)
+          .to change { Order.count }.by(1)
       end
 
       context 'when creat' do
@@ -45,7 +45,7 @@ RSpec.describe OrdersController, type: :controller do
 
         it 'should set correct service' do
           expect(Order.last.service.id).to equal(service.id)
-        end 
+        end
 
         it 'should redirect to the correct path' do
           should redirect_to(action: :show)
@@ -58,19 +58,19 @@ RSpec.describe OrdersController, type: :controller do
     end
 
     context 'invalid params' do
-      let (:params) do
+      let(:params) do
         {
           order: {
             service_id: service.id,
             work_id: work.id,
             car_id: -1
           }
-        } 
+        }
       end
 
       it 'should not create new object' do
         expect { post :create, params: params }
-        .not_to change { Order.count }
+          .not_to change { Order.count }
       end
 
       it 'should render new' do
