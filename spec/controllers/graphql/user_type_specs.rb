@@ -36,8 +36,8 @@ RSpec.describe GraphqlController, type: :controller do
     context 'when incorrect request' do
       let(:query) do
         <<~GQL
-          query {#{' '}
-            users { unexistedField }#{' '}
+          query {
+            users { unexistedField }
           }
         GQL
       end
