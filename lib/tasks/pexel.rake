@@ -7,7 +7,9 @@ namespace :pexel do
   desc 'Tasks under this namespace works with data forom Pexels API'
 
   task download_few_photos: :environment do |_t|
-    pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
+    pexels_service = PexelsService.new('bmw auto',
+                                       size: :medium,
+                                       orientation: :square)
 
     3.times do |i|
       source = pexels_service.photo_src(i)
@@ -17,7 +19,9 @@ namespace :pexel do
 
   task :attach_photo_to_random_cars, [:count] => :environment do |_t, args|
     args.with_defaults(count: 1) if args.empty?
-    pexels_service = PexelsService.new('bmw auto', size: :medium, orientation: :square)
+    pexels_service = PexelsService.new('bmw auto',
+                                       size: :medium,
+                                       orientation: :square)
     cars_without_photo = Car.reject { |car| car.photo.attached? }
 
     unless cars_without_photo.empty?
