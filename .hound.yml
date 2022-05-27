@@ -1,6 +1,3 @@
+
 rubocop:
-<<<<<<< HEAD
   config_file: .rubocop.yml
-=======
-  config_file: .rubocop.yml
->>>>>>> 5ed29c4 (Add hound config file)
