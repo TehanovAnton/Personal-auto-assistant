@@ -59,22 +59,44 @@
 </form>
 
 <script>
-  function sendGraphQLRequest() {
-    let graphqlForm = document.forms.graphqlForm
-    let graphqlFormData = new FormData(graphqlForm)
-    let query = '{ user(id: 1) { id firstName lastName } }'
-    let authenticity_token = graphqlForm['authenticity_token'].getAttribute('id').replace('authenticity_token_', '')
+  var graphqlFrom = () => {
+    let form = document.forms.graphqlForm
+    let formData = new FormData(graphqlForm)
 
-    graphqlFormData.set('query', query)
-    graphqlFormData.set('authenticity_token', authenticity_token)
+    let idAttribute = form['authenticity_token'].getAttribute('id')
+    let authenticationToken = idAttribute.replace('authenticity_token_', '')
+
+    return {
+      form,
+      formData,
+      authenticationToken
+    }
+  }
+  var graphqlUserByIdQuery = (id) => `
+    query {
+      user(id: ${id}) {
+        id
+        firstName
+        lastName
+      }
+    }
+  `
+  let graphqlFormDataSet = (formData, key, value) => { formData.set(key, value) }
+
+  function userById(id) {
+    let { form, formData, authenticationToken } = graphqlFrom()
+    let query = graphqlUserByIdQuery(id)
+
+    graphqlFormDataSet(formData, 'query', query)
+    graphqlFormDataSet(formData, 'authenticity_token', authenticationToken)
 
     fetch('/graphql', {
       method: 'POST',
-      body: graphqlFormData
+      body: formData
     })
     .then(res => res.json())
     .then(data => { console.log(JSON.stringify(data)) })
   }
 
-  sendGraphQLRequest()
+  userById(1)
 </script>
