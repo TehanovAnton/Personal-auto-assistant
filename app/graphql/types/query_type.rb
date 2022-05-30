@@ -10,7 +10,7 @@ module Types
     field :user, resolver: Resolvers::UserResolver
 
     field :cars, resolver: Resolvers::CarsResolver
-    
+
     field :car, resolver: Resolvers::CarsResolver
   end
 end

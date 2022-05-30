@@ -28,8 +28,6 @@ RSpec.describe GraphqlController, type: :controller do
 
     it 'should return array of cars' do
       result = PersonalAutoAssitatntSchema.execute(query)
-
-      binding.pry
       expect(result['data']['cars']).not_to be_empty
     end
   end
