@@ -6,7 +6,6 @@ Lint/AmbiguousBlockAssociation:
 
 Metrics/BlockLength:
   Enabled: false
-
 AllCops:
   Exclude:
     - config/**/*

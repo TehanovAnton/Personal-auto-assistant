@@ -11,11 +11,23 @@
     </div>
   <% end %>
 
+  <% photos.each do |photo| %>
+    <%= image_tag photo, class: 'car-photo' %>
+    <%= radio_button_tag :photo, photo, false %>
+  <% end %>
+  <br>
+
+  <%= form.input :photo, as: :file %>
+
+  <% if @car_form.photo.attached? %>
+    <%= image_tag @car_form.photo, class: 'car-photo' %>
+  <% end %>
+
   <%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.input :model, required: true %>
 
-  <%= form.winput :year_production, required: true %>
+  <%= form.input :year_production, required: true %>
   
   <%= form.input :engine_volume, required: true %>
   
