@@ -51,7 +51,7 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#user' do
     let(:user) { create(:user, role: :car_owner) }
-    let(:query) {
+    let(:query) do
       <<~GQL
         query {
           user(id: #{user.id}) {
@@ -63,7 +63,7 @@ RSpec.describe GraphqlController, type: :controller do
           }
         }
       GQL
-    }
+    end
 
     it 'should return user' do
       result = PersonalAutoAssitatntSchema.execute(query)
