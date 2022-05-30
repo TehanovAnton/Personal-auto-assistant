@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PersonalAutoAssitatntSchema < GraphQL::Schema
-  query(Types::UserQueryType)
+  query(Types::QueryType)
 
   # For batch-loading (see https://graphql-ruby.org/dataloader/overview.html)
   use GraphQL::Dataloader

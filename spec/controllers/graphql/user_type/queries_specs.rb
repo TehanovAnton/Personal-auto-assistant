@@ -50,7 +50,6 @@ RSpec.describe GraphqlController, type: :controller do
   end
 
   describe '#user' do
-    let(:user) { create(:user, role: :car_owner) }
     let(:query) do
       <<~GQL
         query {
