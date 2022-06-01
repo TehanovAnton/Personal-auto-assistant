@@ -17,7 +17,9 @@ class Consumable < ApplicationRecord
 
   delegate :name, to: :consumable_category
 
-  validates :value, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :value,
+            presence: true,
+            numericality: { greater_than_or_equal_to: 0 }
 
   delegate :id, to: :car, prefix: true
 end

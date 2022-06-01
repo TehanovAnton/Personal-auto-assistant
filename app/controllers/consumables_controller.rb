@@ -16,7 +16,9 @@ class ConsumablesController < ApplicationController
     authorize @car_consumable_value
 
     if @car_consumable_value.update(car_consumable_value_params)
-      redirect_to consumables_path(car_id: car_consumable_value_params[:car_id]),
+      redirect_to consumables_path(
+        car_id: car_consumable_value_params[:car_id]
+      ),
                   notice: 'Car consumable value was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
