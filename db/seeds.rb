@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 %w[Minsk Brest Mogilev].each { |name| City.create(name: name) }
-%W[Fuel Coolant Brake_Fluid].each { |name| ConsumableCategory.create(name: name) }
+%w[Fuel Coolant Brake_Fluid].each { |name| ConsumableCategory.create(name: name) }
 
 # Car will have consumables, parts. User will have documents
 FactoryBot.create(:user, role: 'service_owner', email: 'without_car@gmail.com')

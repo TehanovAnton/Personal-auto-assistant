@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GraphqlController, type: :controller do
@@ -36,12 +38,12 @@ RSpec.describe GraphqlController, type: :controller do
     end
 
     it 'should reutrn array of organisations' do
-      result = PersonalAutoAssitatntSchema.execute(user_organization_query) 
+      result = PersonalAutoAssitatntSchema.execute(user_organization_query)
       expect(result['data']['organizations']).not_to be_empty
     end
 
     it 'should reutrn array of user organisations' do
-      result = PersonalAutoAssitatntSchema.execute(organizations_query) 
+      result = PersonalAutoAssitatntSchema.execute(organizations_query)
       expect(result['data']['carsOwnersDocuments']).not_to be_empty
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GraphqlController, type: :controller do
@@ -19,7 +21,7 @@ RSpec.describe GraphqlController, type: :controller do
     end
 
     it 'should reutrn array of user documents' do
-      result = PersonalAutoAssitatntSchema.execute(query) 
+      result = PersonalAutoAssitatntSchema.execute(query)
       expect(result['data']['carsOwnersDocuments']).not_to be_empty
     end
   end
