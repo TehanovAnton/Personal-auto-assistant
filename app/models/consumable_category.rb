@@ -10,6 +10,4 @@
 #  updated_at :datetime         not null
 #
 class ConsumableCategory < ApplicationRecord
-  has_many :car_consumable_values, dependent: :destroy
-  has_many :cars, through: :car_consumable_values
 end

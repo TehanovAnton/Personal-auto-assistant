@@ -11,11 +11,11 @@
   </thead>
 
   <tbody>
-    <% @car_consumable_values.each do |car_consumable_value| %>
+    <% @consumables.each do |car_consumable_value| %>
       <tr>
         <td><%= car_consumable_value.name %></td>
         <td><%= car_consumable_value.value %></td>
-        <td><%= link_to 'Edit', edit_car_consumable_value_path(car_consumable_value) %></td>
+        <td><%= link_to 'Edit', edit_consumable_path(car_consumable_value) %></td>
       </tr>
     <% end %>
   </tbody>
