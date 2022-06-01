@@ -11,11 +11,11 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-class CarConsumableValue < ApplicationRecord
+class Consumable < ApplicationRecord
   belongs_to :car, dependent: :destroy
-  belongs_to :consumable, dependent: :destroy
+  belongs_to :consumable_category, dependent: :destroy
 
-  delegate :name, to: :consumable
+  delegate :name, to: :consumable_category
 
   validates :value, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
