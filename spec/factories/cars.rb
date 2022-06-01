@@ -14,8 +14,8 @@ FactoryBot.define do
     vin { Faker::Vehicle.vin }
 
     after(:create) do |car|
-      Consumable.names.each_key do |key|
-        car.consumables.push(create(:consumable, name: key))
+      Consumable.all.each do |consumable|
+        car.consumables.push(create(:consumable, name: consumable.name))
       end
 
       Part.names.each_key do |key|

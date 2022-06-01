@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_145457) do
+ActiveRecord::Schema.define(version: 2022_06_01_133059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "car_consumable_values", force: :cascade do |t|
-    t.integer "car_id", null: false
-    t.integer "consumable_id", null: false
-    t.integer "value", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["car_id", "consumable_id"], name: "index_car_consumable_values_on_car_id_and_consumable_id", unique: true
   end
 
   create_table "cars", force: :cascade do |t|
@@ -120,11 +111,20 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
     t.string "commentable_type"
   end
 
-  create_table "consumables", force: :cascade do |t|
-    t.integer "name", default: 0, null: false
+  create_table "consumable_categories", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_consumables_on_name", unique: true
+    t.index ["name"], name: "index_consumable_categories_on_name", unique: true
+  end
+
+  create_table "consumables", force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "consumable_category_id", null: false
+    t.integer "value", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id", "consumable_category_id"], name: "index_consumables_on_car_id_and_consumable_category_id", unique: true
   end
 
   create_table "documents", force: :cascade do |t|
@@ -248,8 +248,6 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
-  add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
   add_foreign_key "cars", "users", on_delete: :cascade
   add_foreign_key "cars_owners_documents", "documents", on_delete: :cascade
   add_foreign_key "cars_owners_documents", "users", on_delete: :cascade
@@ -258,6 +256,8 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
   add_foreign_key "cities_organizations", "cities", on_delete: :cascade
   add_foreign_key "cities_organizations", "organizations", on_delete: :cascade
   add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "consumables", "cars", on_delete: :cascade
+  add_foreign_key "consumables", "consumable_categories", on_delete: :cascade
   add_foreign_key "orders", "services_works", on_delete: :cascade
   add_foreign_key "organizations", "users", column: "service_owner_id", on_delete: :cascade
   add_foreign_key "organizations_services_works_prices", "organizations", on_delete: :cascade

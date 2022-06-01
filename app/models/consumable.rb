@@ -2,18 +2,24 @@
 
 # == Schema Information
 #
-# Table name: consumables
+# Table name: car_consumable_values
 #
-#  id         :bigint           not null, primary key
-#  name       :integer          default("fuel"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :bigint           not null, primary key
+#  car_id        :integer          not null
+#  consumable_id :integer          not null
+#  value         :integer          default(0), not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 class Consumable < ApplicationRecord
-  has_many :car_consumable_values, dependent: :destroy
-  has_many :cars, through: :car_consumable_values
+  belongs_to :car, dependent: :destroy
+  belongs_to :consumable_category, dependent: :destroy
 
-  enum name: { fuel: 0, coolant: 1, 'brake fluid': 2 }
+  delegate :name, to: :consumable_category
 
-  validates :name, presence: true, inclusion: { in: Consumable.names.keys }
+  validates :value,
+            presence: true,
+            numericality: { greater_than_or_equal_to: 0 }
+
+  delegate :id, to: :car, prefix: true
 end

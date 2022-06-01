@@ -6,5 +6,7 @@ module Types
     field :first_name, String, null: false
     field :last_name, String, null: false
     field :email, String, null: false
+    field :phone_number, String, null: false
+    field :role, String, null: false
   end
 end

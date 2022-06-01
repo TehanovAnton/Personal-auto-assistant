@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   put '/cars_owners_documents/:user_id/add_document', to: 'cars_owners_documents#add_document', as: 'add_document'
   resources :cars_owners_documents
   
-  resources :car_consumable_values
+  resources :consumables
 
   get '/cars/:id/parts', to: 'cars#parts', as: 'parts'
   get '/cars/:id/new_part', to: 'cars#new_part', as: 'new_part'

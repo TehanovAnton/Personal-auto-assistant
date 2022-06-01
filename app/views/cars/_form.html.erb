@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% photos.each do |photo| %>
+  <% @photos.each do |photo| %>
     <%= image_tag photo, class: 'car-photo' %>
     <%= radio_button_tag :photo, photo, false %>
   <% end %>

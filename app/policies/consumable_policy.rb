@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CarConsumableValuePolicy < ApplicationPolicy
+class ConsumablePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all

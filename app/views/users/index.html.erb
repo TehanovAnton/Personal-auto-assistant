@@ -20,7 +20,53 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New User', new_user_path %>
+
+<form name='graphqlForm'>
+  <%= hidden_field :authenticity_token, form_authenticity_token, name: :authenticity_token %>
+</form>
+
+<script>
+  var graphqlFrom = () => {
+    let form = document.forms.graphqlForm
+    let formData = new FormData(graphqlForm)
+
+    let idAttribute = form['authenticity_token'].getAttribute('id')
+    let authenticationToken = idAttribute.replace('authenticity_token_', '')
+
+    return {
+      form,
+      formData,
+      authenticationToken
+    }
+  }
+  var graphqlUsers = () => `
+    query {
+      users {
+        id
+        firstName
+        lastName
+      }
+    }
+  `
+  let graphqlFormDataSet = (formData, key, value) => { formData.set(key, value) }
+
+  function users() {
+    let { form, formData, authenticationToken } = graphqlFrom()
+    let query = graphqlUsers()
+
+    graphqlFormDataSet(formData, 'query', query)
+    graphqlFormDataSet(formData, 'authenticity_token', authenticationToken)
+
+    fetch('/graphql', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => { console.log(JSON.stringify(data)) })
+  }
+
+  users()
+</script>

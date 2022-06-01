@@ -2,6 +2,8 @@
 
 FactoryBot.define do
   factory :consumable do
-    name {}
+    car_id {}
+    consumable_category_id {}
+    value {}
   end
 end

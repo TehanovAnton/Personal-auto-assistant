@@ -7,7 +7,7 @@ RSpec.describe GraphqlController, type: :controller do
   before { sign_in user }
 
   describe '#users' do
-    context 'when correct request' do
+    context 'when correct query' do
       let(:query) do
         <<~GQL
           query {
@@ -33,7 +33,7 @@ RSpec.describe GraphqlController, type: :controller do
       end
     end
 
-    context 'when incorrect request' do
+    context 'when incorrect query' do
       let(:query) do
         <<~GQL
           query {
@@ -46,6 +46,27 @@ RSpec.describe GraphqlController, type: :controller do
         response = PersonalAutoAssitatntSchema.execute(query)
         expect(response['errors']).not_to be_empty
       end
+    end
+  end
+
+  describe '#user' do
+    let(:query) do
+      <<~GQL
+        query {
+          user(id: #{user.id}) {
+            firstName
+            lastName
+            email
+            phoneNumber
+            role
+          }
+        }
+      GQL
+    end
+
+    it 'should return user' do
+      result = PersonalAutoAssitatntSchema.execute(query)
+      expect(result['data']['user']).not_to be_empty
     end
   end
 end
