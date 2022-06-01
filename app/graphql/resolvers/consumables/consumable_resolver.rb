@@ -11,7 +11,7 @@ module Resolvers
       argument :consumable_name, String, required: true
 
       def resolve(car_id:, consumable_name:)
-        Car.find(car_id).consumables.where(name: consumable_name)
+        Car.find(car_id).consumables.find { |c| c.name == consumable_name }
       end
     end
   end
