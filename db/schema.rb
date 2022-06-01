@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_16_145457) do
+ActiveRecord::Schema.define(version: 2022_06_01_115719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,11 +120,11 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
     t.string "commentable_type"
   end
 
-  create_table "consumables", force: :cascade do |t|
+  create_table "consumable_catigories", force: :cascade do |t|
     t.integer "name", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_consumables_on_name", unique: true
+    t.index ["name"], name: "index_consumable_catigories_on_name", unique: true
   end
 
   create_table "documents", force: :cascade do |t|
@@ -249,7 +249,7 @@ ActiveRecord::Schema.define(version: 2022_05_16_145457) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "car_consumable_values", "cars", on_delete: :cascade
-  add_foreign_key "car_consumable_values", "consumables", on_delete: :cascade
+  add_foreign_key "car_consumable_values", "consumable_catigories", column: "consumable_id", on_delete: :cascade
   add_foreign_key "cars", "users", on_delete: :cascade
   add_foreign_key "cars_owners_documents", "documents", on_delete: :cascade
   add_foreign_key "cars_owners_documents", "users", on_delete: :cascade
