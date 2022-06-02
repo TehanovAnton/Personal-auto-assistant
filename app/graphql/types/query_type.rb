@@ -26,5 +26,8 @@ module Types
 
     field :works, resolver: Resolvers::Works::WorksResolver
     field :work, resolver: Resolvers::Works::WorkResolver
+
+    field :services, resolver: Resolvers::Services::ServicesResolver
+    field :service, resolver: Resolvers::Services::ServiceResolver
   end
 end
