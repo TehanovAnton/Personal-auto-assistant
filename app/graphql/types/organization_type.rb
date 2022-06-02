@@ -7,6 +7,7 @@ module Types
     field :phone_number, String, null: false
     field :address, String, null: false
     field :name, String, null: false
-    field :service_owner_id, Integer, null: false
+    field :services, [Types::ServiceType], null: false
+    field :service_owner, Types::UserType, null: false
   end
 end

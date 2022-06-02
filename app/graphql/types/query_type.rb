@@ -11,9 +11,6 @@ module Types
     field :cars, resolver: Resolvers::CarsResolver
     field :car, resolver: Resolvers::CarsResolver
 
-    field :organizations, resolver: Resolvers::OrganizationsResolver
-    field :organization, resolver: Resolvers::OrganizationResolver
-
     field :cars_owners_documents,
           resolver: Resolvers::CarsOwnersDocumentResolver
     field :cars_owners_document, resolver: Resolvers::CarsOwnersDocumentResolver
@@ -29,5 +26,8 @@ module Types
 
     field :services, resolver: Resolvers::Services::ServicesResolver
     field :service, resolver: Resolvers::Services::ServiceResolver
+    
+    field :organizations, resolver: Resolvers::Organizations::OrganizationsResolver
+    field :organization, resolver: Resolvers::Organizations::OrganizationResolver
   end
 end
