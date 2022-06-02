@@ -23,5 +23,8 @@ module Types
 
     field :parts, resolver: Resolvers::Parts::PartsResolver
     field :part, resolver: Resolvers::Parts::PartResolver
+
+    field :works, resolver: Resolvers::Works::WorksResolver
+    field :work, resolver: Resolvers::Works::WorkResolver
   end
 end
