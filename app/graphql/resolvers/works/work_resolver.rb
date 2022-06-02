@@ -1,9 +1,9 @@
-
+# frozen_string_literal: true
 
 module Resolvers
   module Works
     class WorkResolver < Resolvers::BaseResolver
-      description "Company work by id"
+      description 'Company work by id'
 
       type Types::WorkType, null: true
 

@@ -3,7 +3,7 @@
 module Types
   class QueryType < Types::BaseObject
     include GraphQL::Types::Relay::HasNodeField
-    include GraphQL::Types::Relay::HasNodesField  
+    include GraphQL::Types::Relay::HasNodesField
 
     field :users, resolver: Resolvers::UsersResolver
     field :user, resolver: Resolvers::UserResolver
@@ -26,7 +26,7 @@ module Types
 
     field :services, resolver: Resolvers::Services::ServicesResolver
     field :service, resolver: Resolvers::Services::ServiceResolver
-    
+
     field :organizations, resolver: Resolvers::Organizations::OrganizationsResolver
     field :organization, resolver: Resolvers::Organizations::OrganizationResolver
   end

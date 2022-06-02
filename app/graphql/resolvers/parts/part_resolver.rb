@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 
 module Resolvers
   module Parts
     class PartResolver < BaseResolver
-      description "Car part"
+      description 'Car part'
 
       type Types::PartType, null: true
 

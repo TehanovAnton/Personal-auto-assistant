@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 
 module Resolvers
   module Works
     class WorksResolver < Resolvers::BaseResolver
-      description "Company works"
+      description 'Company works'
 
       type [Types::WorkType], null: true
 
@@ -12,6 +13,7 @@ module Resolvers
         organization = Organization.find_by(id: company_id)
 
         return organization.works if organization
+
         nil
       end
     end
