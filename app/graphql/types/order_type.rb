@@ -6,5 +6,6 @@ module Types
     field :car, Types::CarType, null: false
     field :service, Types::ServiceType, null: false
     field :work, Types::WorkType, null: false
+    field :comments, [Types::CommentType], null: false
   end
 end
