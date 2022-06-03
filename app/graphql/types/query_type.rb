@@ -33,5 +33,8 @@ module Types
     # add order comments to order type 
     field :orders, resolver: Resolvers::Orders::OrdersResolver
     field :order, resolver: Resolvers::Orders::OrderResolver
+
+    field :comments, resolver: Resolvers::Comments::CommentsResolver
+    field :comment, resolver: Resolvers::Comments::CommentResolver
   end
 end
