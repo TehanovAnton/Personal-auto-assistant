@@ -27,6 +27,7 @@ class Car < ApplicationRecord
   has_many :parts, through: :cars_parts
 
   has_many :consumables
+  has_many :orders
 
   belongs_to :user
 

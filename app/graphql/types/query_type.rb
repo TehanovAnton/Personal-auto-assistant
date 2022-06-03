@@ -29,5 +29,9 @@ module Types
 
     field :organizations, resolver: Resolvers::Organizations::OrganizationsResolver
     field :organization, resolver: Resolvers::Organizations::OrganizationResolver
+
+    # add order comments to order type 
+    field :orders, resolver: Resolvers::Orders::OrdersResolver
+    field :order, resolver: Resolvers::Orders::OrderResolver
   end
 end
