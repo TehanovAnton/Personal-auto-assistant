@@ -67,11 +67,24 @@ Works:
       }
     }
   `
+
+  var graphqlComments = () => `
+    query {
+      comments(orderId: 1) {
+        content
+        commentableType
+        user {
+          firstName
+          lastName
+        }
+      }
+    }
+  `
+
   let graphqlFormDataSet = (formData, key, value) => { formData.set(key, value) }
 
-  function users() {
+  function executeQuery(query) {
     let { form, formData, authenticationToken } = graphqlFrom()
-    let query = graphqlWorks()
 
     graphqlFormDataSet(formData, 'query', query)
     graphqlFormDataSet(formData, 'authenticity_token', authenticationToken)
@@ -84,6 +97,10 @@ Works:
     .then(data => { console.log(JSON.stringify(data)) })
   }
 
-  users()
+  let usersQuery = graphqlWorks()
+  executeQuery(usersQuery)
+
+  let commentsQuery = graphqlComments()
+  executeQuery(commentsQuery)
 </script>
 
