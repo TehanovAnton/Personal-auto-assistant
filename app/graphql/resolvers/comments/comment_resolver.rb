@@ -7,19 +7,16 @@ module Resolvers
 
       type Types::CommentType, null: false
 
-      argument :orderId, ID, required: true
-      argument :commentId, ID, required: true
+      argument :order_id, ID, required: true
+      argument :comment_id, ID, required: true
 
-      def resolve(orderId:, commentId:)
-        order = Order.find_by(id: orderId)
+      def resolve(order_id:, comment_id:)
+        order = Order.find_by(id: order_id)
 
-        if order.present?
-          return order.comments.find_by(id: commentId)
-        end
+        return order.comments.find_by(id: comment_id) if order.present?
 
         nil
       end
     end
   end
 end
- 

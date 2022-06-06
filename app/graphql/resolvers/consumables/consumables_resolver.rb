@@ -13,6 +13,7 @@ module Resolvers
         car = Car.find_by(id: car_id)
 
         return car.consumables if car.present?
+
         nil
       end
     end

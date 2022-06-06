@@ -12,10 +12,10 @@ module Resolvers
       def resolve(car_id:)
         car = Car.find_by(id: car_id)
 
-        return car.orders if car.present? 
+        return car.orders if car.present?
+
         []
       end
     end
   end
 end
- 
