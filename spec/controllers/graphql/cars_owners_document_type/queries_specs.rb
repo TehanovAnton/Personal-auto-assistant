@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe GraphqlController, type: :controller do
-  let(:user) { create(:user_with_documents, role: :car_owner) }
+  let(:user) { create(:user, role: :car_owner) }
   before { sign_in user }
 
   describe '#documents' do
@@ -11,8 +11,11 @@ RSpec.describe GraphqlController, type: :controller do
       <<~GQL
         query {
           carsOwnersDocuments(userId: #{user.id}) {
-            userId
-            documentIdå
+            user {
+              firstName
+              lastName
+            }
+            documentId
             issueDate
             termOfValidity
           }
@@ -24,5 +27,25 @@ RSpec.describe GraphqlController, type: :controller do
       result = PersonalAutoAssitatntSchema.execute(query)
       expect(result['data']['carsOwnersDocuments']).not_to be_empty
     end
+  end
+
+  describe '#document' do
+    let(:query) do
+      <<~GQL
+        query {
+          carsOwnersDocument(id: #{user.documents.first.id}) {
+            user{
+              lastName
+              firstName
+            }
+            documentId
+            issueDate
+            termOfValidity
+          }
+        }
+      GQL
+    end
+
+    include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocument'
   end
 end

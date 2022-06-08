@@ -13,3 +13,11 @@ RSpec.shared_examples 'set not empty controller instance variable' do |variable_
     expect(variable).not_to be_empty
   end
 end
+
+RSpec.shared_examples "graphql query result shouldn't to be empty" do |result_scope|
+  it "should return #{result_scope}" do
+    result = PersonalAutoAssitatntSchema.execute(query)
+    binding.pry
+    expect(result['data'][result_scope]).not_to be_empty
+  end
+end
