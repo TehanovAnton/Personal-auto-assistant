@@ -7,45 +7,44 @@ RSpec.describe GraphqlController, type: :controller do
   before { sign_in user }
 
   describe '#documents' do
-    let(:query) do
-      <<~GQL
-        query {
-          carsOwnersDocuments(userId: #{user.id}) {
-            user {
-              firstName
-              lastName
+    context 'when car owner has documents' do
+      include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocuments' do 
+        let(:query) do
+          <<~GQL
+            query {
+              carsOwnersDocuments(userId: #{user.id}) {
+                user {
+                  firstName
+                  lastName
+                }
+                documentId
+                issueDate
+                termOfValidity
+              }
             }
-            documentId
-            issueDate
-            termOfValidity
-          }
-        }
-      GQL
-    end
-
-    it 'should reutrn array of user documents' do
-      result = PersonalAutoAssitatntSchema.execute(query)
-      expect(result['data']['carsOwnersDocuments']).not_to be_empty
+          GQL
+        end
+      end
     end
   end
 
   describe '#document' do
-    let(:query) do
-      <<~GQL
-        query {
-          carsOwnersDocument(id: #{user.documents.first.id}) {
-            user{
-              lastName
-              firstName
+    include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocument' do
+      let(:query) do
+        <<~GQL
+          query {
+            carsOwnersDocument(id: #{user.documents.first.id}) {
+              user{
+                lastName
+                firstName
+              }
+              documentId
+              issueDate
+              termOfValidity
             }
-            documentId
-            issueDate
-            termOfValidity
           }
-        }
-      GQL
+        GQL
+      end
     end
-
-    include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocument'
   end
 end
