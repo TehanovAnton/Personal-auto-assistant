@@ -3,13 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe GraphqlController, type: :controller do
-  let!(:organization) { create(:organization_with_service_and_work, name: 'best company') }
+  let(:organization) do
+    create(:organization_with_service_and_work, name: 'best company')
+  end
   let(:user) { organization.service_owner }
   before { sign_in user }
 
   describe '#organizations' do
     context 'service owner organizations' do
-      include_examples "graphql query result shouldn't to be empty", 'organizations' do      
+      include_examples "graphql request shouldn't to be empty",
+                       'organizations' do
         let(:query) do
           <<~GQL
             query {
@@ -32,7 +35,8 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#organization' do
     context 'specified organization' do
-      include_examples "graphql query result shouldn't to be empty", 'organization' do      
+      include_examples "graphql request shouldn't to be empty",
+                       'organization' do
         let(:query) do
           <<~GQL
             query {

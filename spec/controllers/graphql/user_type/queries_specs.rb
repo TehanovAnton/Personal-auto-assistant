@@ -8,7 +8,7 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#users' do
     context 'when correct query' do
-      include_examples "graphql query result shouldn't to be empty", 'users' do
+      include_examples "graphql request shouldn't to be empty", 'users' do
         let(:query) do
           <<~GQL
             query {
@@ -41,7 +41,7 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#user' do
     context 'when correct query' do
-      include_examples "graphql query result should to be", 'user' do
+      include_examples 'graphql query result should to be', 'user' do
         let(:query) do
           <<~GQL
             query {

@@ -15,8 +15,8 @@ FactoryBot.define do
 
         service.works << work
         organization.works << work
-        
-        organization.reload        
+
+        organization.reload
       end
     end
 
@@ -33,7 +33,9 @@ def create_service(organization:, name: 'technical inspection')
   service = Service.where(name: name).first
   return service if service.present?
 
-  create(:service, name: 'technical inspection', organization_id: organization.id)
+  create(:service,
+         name: 'technical inspection',
+         organization_id: organization.id)
 end
 
 def create_work(category: create_category, title: 'repare engine')

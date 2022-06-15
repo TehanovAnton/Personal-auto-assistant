@@ -12,7 +12,10 @@ end
 
 def organization
   organization = Organization.last
-  organization = create(:organization, name: 'Best organization') unless organization.present?
-  
+  unless organization.present?
+    organization = create(:organization,
+                          name: 'Best organization')
+  end
+
   organization
 end

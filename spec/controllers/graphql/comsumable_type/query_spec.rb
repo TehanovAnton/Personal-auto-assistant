@@ -10,7 +10,8 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#consumables' do
     context 'when order has comments' do
-      include_examples "graphql query result shouldn't to be empty", 'consumables' do
+      include_examples "graphql request shouldn't to be empty",
+                       'consumables' do
         let(:query) do
           <<~GQL
             query {
@@ -23,13 +24,14 @@ RSpec.describe GraphqlController, type: :controller do
             }
           GQL
         end
-      end 
+      end
     end
   end
 
   describe '#consumable' do
     context 'when order has comments' do
-      include_examples "graphql query result shouldn't to be empty", 'consumable' do
+      include_examples "graphql request shouldn't to be empty",
+                       'consumable' do
         let(:query) do
           <<~GQL
             query {
@@ -42,7 +44,7 @@ RSpec.describe GraphqlController, type: :controller do
             }
           GQL
         end
-      end 
+      end
     end
   end
 end

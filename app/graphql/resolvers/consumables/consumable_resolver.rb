@@ -11,7 +11,9 @@ module Resolvers
       argument :consumable_category_id, Integer, required: true
 
       def resolve(car_id:, consumable_category_id:)
-        Car.find(car_id).consumables.find { |c| c.consumable_category_id == consumable_category_id }
+        Car.find(car_id).consumables.find do |c|
+          c.consumable_category_id == consumable_category_id
+        end
       end
     end
   end

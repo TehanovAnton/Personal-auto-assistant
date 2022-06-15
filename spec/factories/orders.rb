@@ -3,12 +3,17 @@
 FactoryBot.define do
   factory :order do
     services_work_id { services_work.id }
-    mileage { Faker::Number.between(from: 10000, to: 100000) }
+    mileage { Faker::Number.between(from: 10_000, to: 100_000) }
     car_id { car.id }
 
     factory :order_with_comments do
       after(:create) do |order|
-        5.times { Comment.create(user_id: commenter.id, content: 'any text', commentable_id: order.id, commentable_type: Order.name) }
+        5.times do
+          Comment.create(user_id: commenter.id,
+                         content: 'any text',
+                         commentable_id: order.id,
+                         commentable_type: Order.name)
+        end
       end
     end
   end

@@ -8,7 +8,8 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#documents' do
     context 'when car owner has documents' do
-      include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocuments' do 
+      include_examples "graphql request shouldn't to be empty",
+                       'carsOwnersDocuments' do
         let(:query) do
           <<~GQL
             query {
@@ -29,7 +30,8 @@ RSpec.describe GraphqlController, type: :controller do
   end
 
   describe '#document' do
-    include_examples "graphql query result shouldn't to be empty", 'carsOwnersDocument' do
+    include_examples "graphql request shouldn't to be empty",
+                     'carsOwnersDocument' do
       let(:query) do
         <<~GQL
           query {

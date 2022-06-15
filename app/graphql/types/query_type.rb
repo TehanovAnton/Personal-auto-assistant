@@ -13,7 +13,8 @@ module Types
 
     field :cars_owners_documents,
           resolver: Resolvers::CarsOwnersDocuments::CarsOwnersDocumentsResolver
-    field :cars_owners_document, resolver: Resolvers::CarsOwnersDocuments::CarsOwnersDocumentResolver
+    field :cars_owners_document,
+          resolver: Resolvers::CarsOwnersDocuments::CarsOwnersDocumentResolver
 
     field :consumables, resolver: Resolvers::Consumables::ConsumablesResolver
     field :consumable, resolver: Resolvers::Consumables::ConsumableResolver
