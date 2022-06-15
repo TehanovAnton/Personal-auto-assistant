@@ -8,28 +8,18 @@ RSpec.describe GraphqlController, type: :controller do
 
   describe '#users' do
     context 'when correct query' do
-      let(:query) do
-        <<~GQL
-          query {
-            users {
-              firstName
-              lastName
-              email
+      include_examples "graphql query result shouldn't to be empty", 'users' do
+        let(:query) do
+          <<~GQL
+            query {
+              users {
+                firstName
+                lastName
+                email
+              }
             }
-          }
-        GQL
-      end
-
-      it 'should return array of users' do
-        result = PersonalAutoAssitatntSchema.execute(query)
-        expect(result['data']['users']).not_to be_empty
-      end
-
-      it 'should return array of users with fitstName, lastName, email' do
-        result = PersonalAutoAssitatntSchema.execute(query)
-        expect(result['data']['users'].first['firstName']).to be
-        expect(result['data']['users'].first['lastName']).to be
-        expect(result['data']['users'].first['email']).to be
+          GQL
+        end
       end
     end
 
@@ -50,23 +40,22 @@ RSpec.describe GraphqlController, type: :controller do
   end
 
   describe '#user' do
-    let(:query) do
-      <<~GQL
-        query {
-          user(id: #{user.id}) {
-            firstName
-            lastName
-            email
-            phoneNumber
-            role
-          }
-        }
-      GQL
-    end
-
-    it 'should return user' do
-      result = PersonalAutoAssitatntSchema.execute(query)
-      expect(result['data']['user']).not_to be_empty
+    context 'when correct query' do
+      include_examples "graphql query result should to be", 'user' do
+        let(:query) do
+          <<~GQL
+            query {
+              user(id: #{user.id}) {
+                firstName
+                lastName
+                email
+                phoneNumber
+                role
+              }
+            }
+          GQL
+        end
+      end
     end
   end
 end
