@@ -3,15 +3,18 @@
 module Resolvers
   module Consumables
     class ConsumablesResolver < BaseResolver
-      description 'Returns all existence consumables or for specific car'
+      description 'Returns car consumables'
 
-      type [Types::ConsumableType], null: false
+      type [Types::ConsumableType], null: true
 
-      argument :car_id, ID, required: false
+      argument :car_id, ID, required: true
 
-      def resolve(car_id: nil)
-        return Car.find(car_id).consumables if car_id.present?
-        return Consumable.all unless car_id.present?
+      def resolve(car_id:)
+        car = Car.find_by(id: car_id)
+
+        return car.consumables if car.present?
+
+        nil
       end
     end
   end

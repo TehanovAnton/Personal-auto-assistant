@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Types
-  class OrganizationType < Types::BaseObject
+  class ServiceType < Types::BaseObject
     field :id, ID, null: false
+    field :name, String, null: false
     field :email, String, null: false
     field :phone_number, String, null: false
     field :address, String, null: false
-    field :name, String, null: false
-    field :services, [Types::ServiceType], null: false
-    field :service_owner, Types::UserType, null: false
+    field :organization, Types::OrganizationType, null: false
+    field :works, [Types::WorkType], null: false
   end
 end

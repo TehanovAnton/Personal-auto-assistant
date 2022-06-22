@@ -7,7 +7,7 @@
 #  id          :bigint           not null, primary key
 #  title       :string           not null
 #  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  updated_at  :datetime         not nullw
 #  category_id :bigint           not null
 #
 require 'elasticsearch/model'
