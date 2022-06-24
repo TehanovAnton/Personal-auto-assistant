@@ -5,15 +5,16 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :users, resolver: Resolvers::UsersResolver
-    field :user, resolver: Resolvers::UserResolver
+    field :users, resolver: Resolvers::Users::UsersResolver
+    field :user, resolver: Resolvers::Users::UserResolver
 
-    field :cars, resolver: Resolvers::CarsResolver
-    field :car, resolver: Resolvers::CarsResolver
+    field :cars, resolver: Resolvers::Cars::CarsResolver
+    field :car, resolver: Resolvers::Cars::CarResolver
 
     field :cars_owners_documents,
-          resolver: Resolvers::CarsOwnersDocumentResolver
-    field :cars_owners_document, resolver: Resolvers::CarsOwnersDocumentResolver
+          resolver: Resolvers::CarsOwnersDocuments::CarsOwnersDocumentsResolver
+    field :cars_owners_document,
+          resolver: Resolvers::CarsOwnersDocuments::CarsOwnersDocumentResolver
 
     field :consumables, resolver: Resolvers::Consumables::ConsumablesResolver
     field :consumable, resolver: Resolvers::Consumables::ConsumableResolver

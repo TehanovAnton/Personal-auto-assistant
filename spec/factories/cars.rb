@@ -13,9 +13,18 @@ FactoryBot.define do
     maker { Faker::Vehicle.make }
     vin { Faker::Vehicle.vin }
 
+    factory :car_with_orders do
+      after(:create) do |car|
+        create_list(:order, 3, car_id: car.id)
+      end
+    end
+
     after(:create) do |car|
-      Consumable.all.each do |consumable|
-        car.consumables.push(create(:consumable, name: consumable.name))
+      ConsumableCategory.all.each do |consumable_category|
+        create(:consumable,
+               consumable_category_id: consumable_category.id,
+               value: 12,
+               car_id: car.id)
       end
 
       Part.names.each_key do |key|

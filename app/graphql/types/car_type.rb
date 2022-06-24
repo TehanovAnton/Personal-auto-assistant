@@ -3,7 +3,7 @@
 module Types
   class CarType < Types::BaseObject
     field :id, ID, null: false
-    field :user_id, Integer, null: false
+    field :user, Types::UserType, null: false
     field :model, String, null: false
     field :year_production, Integer, null: false
     field :engine_volume, Integer, null: false
