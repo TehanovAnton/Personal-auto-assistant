@@ -10,7 +10,7 @@ module Types
     argument :role, Integer, required: false
     argument :created_at, GraphQL::Types::ISO8601DateTime, required: false
     argument :updated_at, GraphQL::Types::ISO8601DateTime, required: false
-    argument :password, String, required: true
+    argument :password, String, required: false
     argument :encrypted_password, String, required: false
     argument :reset_password_token, String, required: false
     argument :reset_password_sent_at, GraphQL::Types::ISO8601DateTime, required: false
