@@ -17,7 +17,7 @@ RSpec.describe GraphqlController, type: :controller  do
       }
     end
 
-    let(:query) do
+    let(:mutation) do
       <<~GQL
       mutation UserCreate($userInput: UserCreateInput!) {
         userCreate(input: $userInput) {
@@ -36,8 +36,38 @@ RSpec.describe GraphqlController, type: :controller  do
 
     it 'create user' do
       binding.pry
-      result = PersonalAutoAssitatntSchema.execute(query, variables: userInput)
+      result = PersonalAutoAssitatntSchema.execute(mutation, variables: userInput)
       expect(result['data']['userCreate']).not_to be_empty
+    end
+  end
+
+  describe '#delete' do
+    let(:user) { create(:user, role: :car_owner) }
+    let(:mutation) do
+      <<~GQL
+      mutation UserDelete($userDeleteInput: UserDeleteInput!) {
+        userDelete(input: $userDeleteInput) {
+          user {
+              id
+              firstName
+              lastName
+          }
+        }
+      }
+      GQL
+    end
+
+    let(:variables) do
+      {
+        userDeleteInput: {
+          id: user.id
+        }
+      }
+    end
+
+    it 'delete user' do
+      result = PersonalAutoAssitatntSchema.execute(mutation, variables: variables)
+      expect(result['data']['userDelete']).not_to be_empty
     end
   end
 end
