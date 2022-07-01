@@ -68,4 +68,33 @@ RSpec.describe GraphqlController, type: :controller do
       expect(result['data']['workUpdate']).not_to be_empty
     end 
   end
+
+  describe '#delete' do
+    let(:mutation) do
+      <<~GQL
+      mutation WorkDelete($workInput:WorkDeleteInput!) {
+        workDelete(input: $workInput) {
+          work {
+            id
+            title
+            categoryId
+          }
+        }
+      }
+      GQL
+    end
+
+    let(:variables) do
+      {
+        "workInput": {
+          "id": work.id
+        }
+      }
+    end
+
+    it 'delete work' do
+      result = PersonalAutoAssitatntSchema.execute(mutation, variables: variables)
+      expect(result['data']['workDelete']).not_to be_empty
+    end
+  end
 end
