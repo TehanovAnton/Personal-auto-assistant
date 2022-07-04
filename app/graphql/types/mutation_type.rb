@@ -2,6 +2,7 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :organization_delete, mutation: Mutations::Organizations::OrganizationDelete
     field :organization_update, mutation: Mutations::Organizations::OrganizationUpdate
     field :organization_create, mutation: Mutations::Organizations::OrganizationCreate
     
