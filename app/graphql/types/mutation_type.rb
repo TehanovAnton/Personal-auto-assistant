@@ -2,6 +2,8 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :part_create, mutation: Mutations::Parts::PartCreate
+
     field :service_delete, mutation: Mutations::Services::ServiceDelete
     field :service_update, mutation: Mutations::Services::ServiceUpdate
     field :service_create, mutation: Mutations::Services::ServiceCreate
