@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe GraphqlController, type: :controller  do
+RSpec.describe GraphqlController, type: :controller do
   let(:user) { create(:user, role: :car_owner) }
 
   describe '#create' do
@@ -8,12 +10,12 @@ RSpec.describe GraphqlController, type: :controller  do
       {
         userInput: {
           userInput: {
-            firstName: "osavldo",
-            lastName: "lugones",
-            email: "lugones@gmail.com",
-            phoneNumber: "12345",
+            firstName: 'osavldo',
+            lastName: 'lugones',
+            email: 'lugones@gmail.com',
+            phoneNumber: '12345',
             role: 0,
-            password: "ewqqwe"
+            password: 'ewqqwe'
           }
         }
       }
@@ -21,18 +23,18 @@ RSpec.describe GraphqlController, type: :controller  do
 
     let(:mutation) do
       <<~GQL
-      mutation UserCreate($userInput: UserCreateInput!) {
-        userCreate(input: $userInput) {
-            user {
-              id
-              firstName
-              lastName
-              email
-              phoneNumber
-              role
-            }
+        mutation UserCreate($userInput: UserCreateInput!) {
+          userCreate(input: $userInput) {
+              user {
+                id
+                firstName
+                lastName
+                email
+                phoneNumber
+                role
+              }
+          }
         }
-      }
       GQL
     end
 
@@ -45,15 +47,15 @@ RSpec.describe GraphqlController, type: :controller  do
   describe '#delete' do
     let(:mutation) do
       <<~GQL
-      mutation UserDelete($userDeleteInput: UserDeleteInput!) {
-        userDelete(input: $userDeleteInput) {
-          user {
-              id
-              firstName
-              lastName
+        mutation UserDelete($userDeleteInput: UserDeleteInput!) {
+          userDelete(input: $userDeleteInput) {
+            user {
+                id
+                firstName
+                lastName
+            }
           }
         }
-      }
       GQL
     end
 
@@ -74,18 +76,18 @@ RSpec.describe GraphqlController, type: :controller  do
   describe '#update' do
     let(:mutation) do
       <<~GQL
-      mutation UserUpdate($userInput: UserUpdateInput!) {
-        userUpdate(input: $userInput) {
-          user {
-            id
-            firstName
-            lastName
-            email
-            phoneNumber
-            role
+        mutation UserUpdate($userInput: UserUpdateInput!) {
+          userUpdate(input: $userInput) {
+            user {
+              id
+              firstName
+              lastName
+              email
+              phoneNumber
+              role
+            }
           }
         }
-      }
       GQL
     end
 
@@ -94,8 +96,8 @@ RSpec.describe GraphqlController, type: :controller  do
         userInput: {
           id: user.id,
           userInput: {
-            firstName: "Artas",
-            lastName: "Alharak"
+            firstName: 'Artas',
+            lastName: 'Alharak'
           }
         }
       }

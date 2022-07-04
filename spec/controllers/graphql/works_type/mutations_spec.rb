@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GraphqlController, type: :controller do
@@ -7,15 +9,15 @@ RSpec.describe GraphqlController, type: :controller do
   describe '#create' do
     let(:mutation) do
       <<~GQL
-      mutation WorkCreate($workInput: WorkCreateInput!) {
-        workCreate(input: $workInput) {
-          work {
-            id
-            title
-            categoryId
+        mutation WorkCreate($workInput: WorkCreateInput!) {
+          workCreate(input: $workInput) {
+            work {
+              id
+              title
+              categoryId
+            }
           }
         }
-      }
       GQL
     end
 
@@ -23,7 +25,7 @@ RSpec.describe GraphqlController, type: :controller do
       {
         workInput: {
           workInput: {
-            title: "drying",
+            title: 'drying',
             categoryId: category.id
           }
         }
@@ -36,18 +38,18 @@ RSpec.describe GraphqlController, type: :controller do
     end
   end
 
-  describe '#update' do    
+  describe '#update' do
     let(:mutation) do
       <<~GQL
-      mutation UpdateWork($workInput: WorkUpdateInput!) {
-        workUpdate(input:$workInput) {
-          work {
-            id
-            title
-            categoryId
+        mutation UpdateWork($workInput: WorkUpdateInput!) {
+          workUpdate(input:$workInput) {
+            work {
+              id
+              title
+              categoryId
+            }
           }
         }
-      }
       GQL
     end
 
@@ -56,8 +58,8 @@ RSpec.describe GraphqlController, type: :controller do
         workInput: {
           id: work.id,
           workInput: {
-            title: "updated title",
-            categoryId: category.id,
+            title: 'updated title',
+            categoryId: category.id
           }
         }
       }
@@ -66,21 +68,21 @@ RSpec.describe GraphqlController, type: :controller do
     it 'update work' do
       result = PersonalAutoAssitatntSchema.execute(mutation, variables: variables)
       expect(result['data']['workUpdate']).not_to be_empty
-    end 
+    end
   end
 
   describe '#delete' do
     let(:mutation) do
       <<~GQL
-      mutation WorkDelete($workInput:WorkDeleteInput!) {
-        workDelete(input: $workInput) {
-          work {
-            id
-            title
-            categoryId
+        mutation WorkDelete($workInput:WorkDeleteInput!) {
+          workDelete(input: $workInput) {
+            work {
+              id
+              title
+              categoryId
+            }
           }
         }
-      }
       GQL
     end
 

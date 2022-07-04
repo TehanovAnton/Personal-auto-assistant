@@ -5,7 +5,7 @@ module Types
     field :organization_delete, mutation: Mutations::Organizations::OrganizationDelete
     field :organization_update, mutation: Mutations::Organizations::OrganizationUpdate
     field :organization_create, mutation: Mutations::Organizations::OrganizationCreate
-    
+
     field :part_delete, mutation: Mutations::Parts::PartDelete
     field :part_update, mutation: Mutations::Parts::PartUpdate
     field :part_create, mutation: Mutations::Parts::PartCreate
@@ -13,7 +13,7 @@ module Types
     field :service_delete, mutation: Mutations::Services::ServiceDelete
     field :service_update, mutation: Mutations::Services::ServiceUpdate
     field :service_create, mutation: Mutations::Services::ServiceCreate
-    
+
     field :work_delete, mutation: Mutations::Works::WorkDelete
     field :work_update, mutation: Mutations::Works::WorkUpdate
     field :work_create, mutation: Mutations::Works::WorkCreate

@@ -3,7 +3,7 @@
 module Mutations
   module Works
     class WorkUpdate < BaseMutation
-      description "Updates a work by id"
+      description 'Updates a work by id'
 
       field :work, Types::WorkType, null: false
 
@@ -12,7 +12,10 @@ module Mutations
 
       def resolve(id:, work_input:)
         work = ::Work.find(id)
-        raise GraphQL::ExecutionError.new "Error updating work", extensions: work.errors.to_hash unless work.update(**work_input)
+        unless work.update(**work_input)
+          raise GraphQL::ExecutionError.new 'Error updating work',
+                                            extensions: work.errors.to_hash
+        end
 
         { work: work }
       end
