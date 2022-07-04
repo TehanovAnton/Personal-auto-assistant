@@ -2,6 +2,7 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :part_delete, mutation: Mutations::Parts::PartDelete
     field :part_update, mutation: Mutations::Parts::PartUpdate
     field :part_create, mutation: Mutations::Parts::PartCreate
 
