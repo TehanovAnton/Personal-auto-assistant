@@ -67,11 +67,16 @@ class OrganizationsController < ApplicationController
   end
 
   def organization(organization_id: nil)
-    @organization = organization_id ? Organization.find_by(id: organization_id) : Organization.new(organization_params)
+    @organization = if organization_id
+                      Organization.find_by(id: organization_id)
+                    else
+                      Organization.new(organization_params)
+                    end
   end
 
   def organization_params
-    params.require(:organization).permit(:service_owner_id, :email, :phone_number, :address, :name, city_ids: [])
+    params.require(:organization).permit(:service_owner_id, :email, :phone_number, :address, :name,
+                                         city_ids: [])
   end
 
   def choosen_services
@@ -80,11 +85,15 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_new_services
-    services = params[:organization_services].keys.map { |name| Service.id_by_name(Service.original_name(name)) }
+    services = params[:organization_services].keys.map do |name|
+      Service.id_by_name(Service.original_name(name))
+    end
     @services = Service.find(services)
   end
 
   def organization_new_services_works
-    @service_works = ServiceWork.find(params[:organization_services][service.name_in_one_word][:service_works].drop(1))
+    service_name = service.name_in_one_word
+    service_works_id = params[:organization_services][service_name][:service_works].drop(1)
+    @service_works = ServiceWork.find(service_works_id)
   end
 end

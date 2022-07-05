@@ -11,7 +11,10 @@ module Mutations
 
       def resolve(id:)
         part = ::Part.find(id)
-        raise GraphQL::ExecutionError.new 'Error deleting part', extensions: part.errors.to_hash unless part.destroy
+        unless part.destroy
+          raise GraphQL::ExecutionError.new 'Error deleting part',
+                                            extensions: part.errors.to_hash
+        end
 
         { part: part }
       end

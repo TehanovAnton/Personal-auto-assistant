@@ -4,6 +4,9 @@ Style/Documentation:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Metrics/LineLength:
+  Max: 100
+
 Metrics/BlockLength:
   Enabled: false
 AllCops:

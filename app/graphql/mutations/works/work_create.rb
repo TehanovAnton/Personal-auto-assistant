@@ -11,7 +11,10 @@ module Mutations
 
       def resolve(work_input:)
         work = ::Work.new(**work_input)
-        raise GraphQL::ExecutionError.new 'Error creating work', extensions: work.errors.to_hash unless work.save
+        unless work.save
+          raise GraphQL::ExecutionError.new 'Error creating work',
+                                            extensions: work.errors.to_hash
+        end
 
         { work: work }
       end

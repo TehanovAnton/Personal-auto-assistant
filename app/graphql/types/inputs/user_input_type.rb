@@ -14,11 +14,17 @@ module Types
       argument :password, String, required: false
       argument :encrypted_password, String, required: false
       argument :reset_password_token, String, required: false
-      argument :reset_password_sent_at, GraphQL::Types::ISO8601DateTime, required: false
-      argument :remember_created_at, GraphQL::Types::ISO8601DateTime, required: false
+      argument :reset_password_sent_at,
+               GraphQL::Types::ISO8601DateTime, required: false
+      argument :remember_created_at,
+               GraphQL::Types::ISO8601DateTime,
+               required: false
       argument :confirmation_token, String, required: false
       argument :confirmed_at, GraphQL::Types::ISO8601DateTime, required: false
-      argument :confirmation_sent_at, GraphQL::Types::ISO8601DateTime, required: false
+      argument :confirmation_sent_at,
+               GraphQL::Types::ISO8601DateTime,
+               required: false
+
       argument :unconfirmed_email, String, required: false
       argument :provider, String, required: false
       argument :uid, String, required: false

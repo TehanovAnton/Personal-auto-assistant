@@ -11,7 +11,10 @@ module Mutations
 
       def resolve(part_input:)
         part = ::Part.new(**part_input)
-        raise GraphQL::ExecutionError.new 'Error creating part', extensions: part.errors.to_hash unless part.save
+        unless part.save
+          raise GraphQL::ExecutionError.new 'Error creating part',
+                                            extensions: part.errors.to_hash
+        end
 
         { part: part }
       end

@@ -6,7 +6,7 @@ RSpec.describe GraphqlController, type: :controller do
   let(:user) { create(:user, role: :car_owner) }
 
   describe '#create' do
-    include_examples "mutation return response" do
+    include_examples 'mutation return response' do
       let(:mutation_resolver) { 'userCreate' }
       let(:description) { 'create user' }
       let(:input_variables) do
@@ -23,7 +23,6 @@ RSpec.describe GraphqlController, type: :controller do
           }
         }
       end
-  
       let(:mutation) do
         <<~GQL
           mutation UserCreate($userInput: UserCreateInput!) {
@@ -44,7 +43,7 @@ RSpec.describe GraphqlController, type: :controller do
   end
 
   describe '#delete' do
-    include_examples "mutation return response" do
+    include_examples 'mutation return response' do
       let(:mutation_resolver) { 'userDelete' }
       let(:description) { 'delete user' }
       let(:mutation) do
@@ -60,7 +59,6 @@ RSpec.describe GraphqlController, type: :controller do
           }
         GQL
       end
-  
       let(:input_variables) do
         {
           userDeleteInput: {
@@ -72,7 +70,7 @@ RSpec.describe GraphqlController, type: :controller do
   end
 
   describe '#update' do
-    include_examples "mutation return response" do
+    include_examples 'mutation return response' do
       let(:mutation_resolver) { 'userUpdate' }
       let(:description) { 'update user' }
       let(:mutation) do
@@ -91,7 +89,6 @@ RSpec.describe GraphqlController, type: :controller do
           }
         GQL
       end
-  
       let(:input_variables) do
         {
           userInput: {

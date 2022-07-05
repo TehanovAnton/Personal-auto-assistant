@@ -21,7 +21,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    service = OrderService.new(service_id: order_params[:service_id], work_id: order_params[:work_id],
+    service = OrderService.new(service_id: order_params[:service_id],
+                               work_id: order_params[:work_id],
                                car_id: order_params[:car_id])
     if service.new_order.save
       service.mail_notifications(Order.last)

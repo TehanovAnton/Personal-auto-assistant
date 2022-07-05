@@ -8,7 +8,10 @@ RSpec.describe UsersController, type: :controller do
     let(:user) { FactoryBot.create(:user) }
 
     let(:params) do
-      { user: { first_name: 'new', last_name: 'new', phone_number: '1234', email: 'newone@gmail.com' }, id: user.id }
+      {
+        user: { first_name: 'new', last_name: 'new', phone_number: '1234',
+                email: 'newone@gmail.com' }, id: user.id
+      }
     end
 
     it 'permit params' do

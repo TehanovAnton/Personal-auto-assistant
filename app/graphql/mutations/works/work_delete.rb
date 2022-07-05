@@ -11,7 +11,10 @@ module Mutations
 
       def resolve(id:)
         work = ::Work.find(id)
-        raise GraphQL::ExecutionError.new 'Error deleting work', extensions: work.errors.to_hash unless work.destroy
+        unless work.destroy
+          raise GraphQL::ExecutionError.new 'Error deleting work',
+                                            extensions: work.errors.to_hash
+        end
 
         { work: work }
       end

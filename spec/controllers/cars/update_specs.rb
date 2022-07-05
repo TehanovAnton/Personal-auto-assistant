@@ -33,7 +33,9 @@ RSpec.describe CarsController, type: :controller do
       end
 
       it 'update car' do
-        expect { put :update, params: params }.to change { car.reload.maker }.from('Honda').to('BMW')
+        expect { put :update, params: params }.to change {
+                                                    car.reload.maker
+                                                  }.from('Honda').to('BMW')
       end
 
       it 'redirect to show' do
