@@ -34,14 +34,14 @@ RSpec.describe GraphqlController, type: :controller do
         {
           organizationInput: {
             organizationInput: {
-              name: "neworg",
-              email: "neworg@gmail.com",
-              phoneNumber: "12345678",
-              address: "neworg 23",
+              name: 'neworg',
+              email: 'neworg@gmail.com',
+              phoneNumber: '12345678',
+              address: 'neworg 23',
               serviceOwnerId: service_owner.id
             }
           }
-      }
+        }
       end
     end
   end
@@ -78,8 +78,8 @@ RSpec.describe GraphqlController, type: :controller do
           organizationInput: {
             id: organization.id,
             organizationInput: {
-              name: "newestOrg",
-              address: "newestOrg 23"        
+              name: 'newestOrg',
+              address: 'newestOrg 23'
             }
           }
         }
@@ -110,14 +110,14 @@ RSpec.describe GraphqlController, type: :controller do
                   address
                 }
               }
-            }  
+            }#{'  '}
           }
         GQL
       end
       let(:input_variables) do
         {
           organizationInput: {
-            id: organization.id,
+            id: organization.id
           }
         }
       end

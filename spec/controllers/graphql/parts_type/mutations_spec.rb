@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 require 'rails_helper'
@@ -42,7 +41,7 @@ RSpec.describe GraphqlController, type: :controller do
         user = create(:user, role: :car_owner)
         car = create(:car, user: user)
 
-        Part.destroy_by(name: [:brakes, :motor])
+        Part.destroy_by(name: %i[brakes motor])
         car.parts.first
       end
       let(:mutation) do
@@ -64,7 +63,7 @@ RSpec.describe GraphqlController, type: :controller do
             partInput: {
               name: 1
             }
-          }   
+          }
         }
       end
     end
@@ -77,8 +76,8 @@ RSpec.describe GraphqlController, type: :controller do
       let(:part) do
         user = create(:user, role: :car_owner)
         create(:car, user: user)
-        .parts
-        .first
+          .parts
+          .first
       end
       let(:mutation) do
         <<~GQL

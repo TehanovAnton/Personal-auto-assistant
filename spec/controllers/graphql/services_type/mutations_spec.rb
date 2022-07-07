@@ -29,10 +29,10 @@ RSpec.describe GraphqlController, type: :controller do
         {
           servicesInput: {
             serviceInput: {
-              name: "new service",
-              email: "new_service@gmail.com",
-              phoneNumber: "12345678",
-              address: "Mihalkova 15",
+              name: 'new service',
+              email: 'new_service@gmail.com',
+              phoneNumber: '12345678',
+              address: 'Mihalkova 15',
               organizationId: organization.id
             }
           }
@@ -45,8 +45,8 @@ RSpec.describe GraphqlController, type: :controller do
     include_examples 'mutation return response' do
       let(:service) do
         create(:organization_with_service_and_work, name: 'NewOrganization')
-        .services
-        .first
+          .services
+          .first
       end
       let(:mutation_resolver) { 'serviceUpdate' }
       let(:description) { 'update service' }
@@ -72,8 +72,8 @@ RSpec.describe GraphqlController, type: :controller do
           serviceInput: {
             id: service.id,
             serviceInput: {
-              address: service.address + ' updated',
-              phoneNumber: '12345678987654',
+              address: "#{service.address} updated",
+              phoneNumber: '12345678987654'
             }
           }
         }
@@ -87,8 +87,8 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'delete service' }
       let(:service) do
         create(:organization_with_service_and_work, name: 'NewOrganization')
-        .services
-        .first
+          .services
+          .first
       end
       let(:mutation) do
         <<~GQL
