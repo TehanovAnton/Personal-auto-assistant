@@ -22,7 +22,7 @@ RSpec.describe GraphqlController, type: :controller do
             }
           }
         GQL
-      end  
+      end
       let(:input_variables) do
         {
           workInput: {
@@ -94,6 +94,6 @@ RSpec.describe GraphqlController, type: :controller do
           }
         }
       end
-    end 
+    end
   end
 end
