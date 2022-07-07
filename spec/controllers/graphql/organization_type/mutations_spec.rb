@@ -110,7 +110,7 @@ RSpec.describe GraphqlController, type: :controller do
                   address
                 }
               }
-            }#{'  '}
+            }
           }
         GQL
       end
