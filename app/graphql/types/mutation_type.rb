@@ -2,6 +2,13 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :cars_owners_document_delete,
+          mutation: Mutations::CarsOwnersDocuments::CarsOwnersDocumentDelete
+    field :cars_owners_document_update,
+          mutation: Mutations::CarsOwnersDocuments::CarsOwnersDocumentUpdate
+    field :cars_owners_document_create,
+          mutation: Mutations::CarsOwnersDocuments::CarsOwnersDocumentCreate
+
     field :comment_delete, mutation: Mutations::Comments::CommentDelete
     field :comment_update, mutation: Mutations::Comments::CommentUpdate
     field :comment_create, mutation: Mutations::Comments::CommentCreate

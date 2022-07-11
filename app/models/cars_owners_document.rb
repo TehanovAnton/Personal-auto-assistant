@@ -28,6 +28,6 @@ class CarsOwnersDocument < ApplicationRecord
     return if issue_date < Time.current.to_date
 
     errors.add(:issue_date,
-               'Document issue date nust be earlier than now')
+               'Document issue date must be earlier than now')
   end
 end
