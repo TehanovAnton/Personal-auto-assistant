@@ -2,6 +2,10 @@
 
 module Types
   class MutationType < Types::BaseObject
+    field :consumable_delete, mutation: Mutations::Consumables::ConsumableDelete
+    field :consumable_update, mutation: Mutations::Consumables::ConsumableUpdate
+    field :consumable_create, mutation: Mutations::Consumables::ConsumableCreate
+
     field :order_delete, mutation: Mutations::Orders::OrderDelete
     field :order_update, mutation: Mutations::Orders::OrderUpdate
     field :order_create, mutation: Mutations::Orders::OrderCreate
