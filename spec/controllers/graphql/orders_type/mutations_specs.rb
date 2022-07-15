@@ -31,7 +31,7 @@ RSpec.describe GraphqlController, type: :controller do
                 }
                 work {
                   id
-                  title#{' '}
+                  title
                 }
               }
             }
@@ -72,7 +72,7 @@ RSpec.describe GraphqlController, type: :controller do
                       }
                       work {
                           id
-                          title#{' '}
+                          title
                       }
                   }
             }
@@ -112,7 +112,7 @@ RSpec.describe GraphqlController, type: :controller do
                       }
                       work {
                           id
-                          title#{' '}
+                          title
                       }
               }
             }
