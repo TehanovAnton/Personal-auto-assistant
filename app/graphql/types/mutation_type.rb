@@ -5,7 +5,7 @@ module Types
     field :car_delete, mutation: Mutations::Cars::CarDelete
     field :car_update, mutation: Mutations::Cars::CarUpdate
     field :car_create, mutation: Mutations::Cars::CarCreate
-    
+
     field :cars_owners_document_delete,
           mutation: Mutations::CarsOwnersDocuments::CarsOwnersDocumentDelete
     field :cars_owners_document_update,

@@ -11,34 +11,34 @@ RSpec.describe GraphqlController, type: :controller do
 
     include_examples 'mutation return response' do
       let(:mutation_resolver) { 'carsOwnersDocumentCreate' }
-      let(:description) { 'create carsOwnersDocument' }      
+      let(:description) { 'create carsOwnersDocument' }
       let(:mutation) do
         <<~GQL
-        mutation CarsOwnersDocumentCreate($carsOwnersDocumentInput:CarsOwnersDocumentCreateInput!) {
-          carsOwnersDocumentCreate(input:$carsOwnersDocumentInput) {
-            carsOwnersDocument {
-              id
-              user {
-                    id
-                    email
-            }
-              documentId
-              issueDate
-              termOfValidity
+          mutation CarsOwnersDocumentCreate($carsOwnersDocumentInput:CarsOwnersDocumentCreateInput!) {
+            carsOwnersDocumentCreate(input:$carsOwnersDocumentInput) {
+              carsOwnersDocument {
+                id
+                user {
+                      id
+                      email
+              }
+                documentId
+                issueDate
+                termOfValidity
+              }
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
         {
           "carsOwnersDocumentInput": {
-                "carsOwnersDocumentInput": {
-                    "userId": user.id,
-                    "documentId": document.id,
-                    "issueDate": "2022-06-06",
-                    "termOfValidity": 30
-                }
+            "carsOwnersDocumentInput": {
+              "userId": user.id,
+              "documentId": document.id,
+              "issueDate": '2022-06-06',
+              "termOfValidity": 30
+            }
           }
         }
       end
@@ -51,32 +51,32 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'update carsOwnersDocument' }
       let(:mutation) do
         <<~GQL
-        mutation CarsOwnersDocumentUpdate($carsOwnersDocumentInput:CarsOwnersDocumentUpdateInput!) {
-          carsOwnersDocumentUpdate(input:$carsOwnersDocumentInput) {
-            carsOwnersDocument {
-              id
-              user {
+          mutation CarsOwnersDocumentUpdate($carsOwnersDocumentInput:CarsOwnersDocumentUpdateInput!) {
+            carsOwnersDocumentUpdate(input:$carsOwnersDocumentInput) {
+              carsOwnersDocument {
                 id
-                email
+                user {
+                  id
+                  email
+                }
+                documentId
+                issueDate
+                termOfValidity
               }
-              documentId
-              issueDate
-              termOfValidity
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
         {
           "carsOwnersDocumentInput": {
             "id": user.cars_owners_documents.first.id,
-                "carsOwnersDocumentInput": {
-                    "userId": user.id,
-                    "documentId": document.id,
-                    "issueDate": "2022-06-12",
-                    "termOfValidity": 50
-                }
+            "carsOwnersDocumentInput": {
+              "userId": user.id,
+              "documentId": document.id,
+              "issueDate": '2022-06-12',
+              "termOfValidity": 50
+            }
           }
         }
       end
@@ -89,20 +89,20 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'delete carsOwnersDocument' }
       let(:mutation) do
         <<~GQL
-        mutation CarsOwnersDocumentDelete($carsOwnersDocumentInput:CarsOwnersDocumentDeleteInput!) {
-          carsOwnersDocumentDelete(input:$carsOwnersDocumentInput) {
-            carsOwnersDocument {
-              id
-              user {
+          mutation CarsOwnersDocumentDelete($carsOwnersDocumentInput:CarsOwnersDocumentDeleteInput!) {
+            carsOwnersDocumentDelete(input:$carsOwnersDocumentInput) {
+              carsOwnersDocument {
                 id
-                email
+                user {
+                  id
+                  email
+                }
+                documentId
+                issueDate
+                termOfValidity
               }
-              documentId
-              issueDate
-              termOfValidity
             }
           }
-        }
         GQL
       end
       let(:input_variables) do

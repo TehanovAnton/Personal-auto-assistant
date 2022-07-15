@@ -9,40 +9,40 @@ RSpec.describe GraphqlController, type: :controller do
   describe '#create' do
     include_examples 'mutation return response' do
       let(:mutation_resolver) { 'carCreate' }
-      let(:description) { 'create car' }      
+      let(:description) { 'create car' }
       let(:mutation) do
         <<~GQL
-        mutation CarCreate($carInput:CarCreateInput!) {
-          carCreate(input:$carInput) {
-                car {
-                    id
-                    user {
-                        id
-                        email
-                    }
-                    maker
-                    model
-                    vin
-                    mileage
-                }
+          mutation CarCreate($carInput:CarCreateInput!) {
+            carCreate(input:$carInput) {
+                  car {
+                      id
+                      user {
+                          id
+                          email
+                      }
+                      maker
+                      model
+                      vin
+                      mileage
+                  }
+            }
           }
-        }
         GQL
       end
       let(:input_variables) do
         {
           "carInput": {
             "carInput": {
-                "userId": user.id,
-                "model": "Prius",
-                "yearProduction": 2011,
-                "engineVolume": 1, 
-                "mileage": 10000,
-                "bodyType": "Wagon",
-                "maker": "Nissan",
-                "vin": "M30129K45C18T9894",
-                "fuelType": 0	
-          }
+              "userId": user.id,
+              "model": 'Prius',
+              "yearProduction": 2011,
+              "engineVolume": 1,
+              "mileage": 10_000,
+              "bodyType": 'Wagon',
+              "maker": 'Nissan',
+              "vin": 'M30129K45C18T9894',
+              "fuelType": 0
+            }
           }
         }
       end
@@ -55,21 +55,21 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'update car' }
       let(:mutation) do
         <<~GQL
-        mutation CarUpdate($carInput:CarUpdateInput!) {
-          carUpdate(input:$carInput) {
-            car {
-              id
-              user {
+          mutation CarUpdate($carInput:CarUpdateInput!) {
+            carUpdate(input:$carInput) {
+              car {
                 id
-                email
+                user {
+                  id
+                  email
+                }
+                maker
+                model
+                vin
+                mileage
               }
-              maker
-              model
-              vin
-              mileage
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
@@ -78,15 +78,15 @@ RSpec.describe GraphqlController, type: :controller do
             "id": car.id,
             "carInput": {
               "userId": user.id,
-              "model": "Maclaren",
+              "model": 'Maclaren',
               "yearProduction": 2005,
-              "engineVolume": 1, 
-              "mileage": 10000,
-              "bodyType": "Wagon",
-              "maker": "Nissan",
-              "vin": "M30129K45C18T9894",
-              "fuelType": 0	
-          }
+              "engineVolume": 1,
+              "mileage": 10_000,
+              "bodyType": 'Wagon',
+              "maker": 'Nissan',
+              "vin": 'M30129K45C18T9894',
+              "fuelType": 0
+            }
           }
         }
       end
@@ -99,21 +99,21 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'delete car' }
       let(:mutation) do
         <<~GQL
-        mutation CarDelete($carInput:CarDeleteInput!) {
-          carDelete(input:$carInput) {
-            car {
-              id
-              user {
+          mutation CarDelete($carInput:CarDeleteInput!) {
+            carDelete(input:$carInput) {
+              car {
                 id
-                email
+                user {
+                  id
+                  email
+                }
+                maker
+                model
+                vin
+                mileage
               }
-              maker
-              model
-              vin
-              mileage
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
@@ -126,4 +126,3 @@ RSpec.describe GraphqlController, type: :controller do
     end
   end
 end
-

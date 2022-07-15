@@ -14,28 +14,28 @@ RSpec.describe GraphqlController, type: :controller do
   describe '#create' do
     include_examples 'mutation return response' do
       let(:mutation_resolver) { 'orderCreate' }
-      let(:description) { 'create order' }      
+      let(:description) { 'create order' }
       let(:mutation) do
         <<~GQL
-        mutation OrderCreate($orderInput:OrderCreateInput!) {
-          orderCreate(input: $orderInput) {
-            order {
-                id
-              service {
-                id
-                name
-              }
-              car {
-                id
-                maker
-              }
-              work {
-                id
-                title 
+          mutation OrderCreate($orderInput:OrderCreateInput!) {
+            orderCreate(input: $orderInput) {
+              order {
+                  id
+                service {
+                  id
+                  name
+                }
+                car {
+                  id
+                  maker
+                }
+                work {
+                  id
+                  title#{' '}
+                }
               }
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
@@ -58,25 +58,25 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'update order' }
       let(:mutation) do
         <<~GQL
-        mutation OrderUpdate($orderInput:OrderUpdateInput!) {
-          orderUpdate(input:$orderInput) {
-                order {
-                    id
-                    service {
-                        id
-                        name
-                    }
-                    car {
-                        id
-                        maker
-                    }
-                    work {
-                        id
-                        title 
-                    }
-                }
+          mutation OrderUpdate($orderInput:OrderUpdateInput!) {
+            orderUpdate(input:$orderInput) {
+                  order {
+                      id
+                      service {
+                          id
+                          name
+                      }
+                      car {
+                          id
+                          maker
+                      }
+                      work {
+                          id
+                          title#{' '}
+                      }
+                  }
+            }
           }
-        }
         GQL
       end
       let(:input_variables) do
@@ -98,25 +98,25 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'delete order' }
       let(:mutation) do
         <<~GQL
-        mutation OrderDelete($orderInput:OrderDeleteInput!) {
-          orderDelete(input:$orderInput) {
-            order {
-              id
-                    service {
-                        id
-                        name
-                    }
-                    car {
-                        id
-                        maker
-                    }
-                    work {
-                        id
-                        title 
-                    }
+          mutation OrderDelete($orderInput:OrderDeleteInput!) {
+            orderDelete(input:$orderInput) {
+              order {
+                id
+                      service {
+                          id
+                          name
+                      }
+                      car {
+                          id
+                          maker
+                      }
+                      work {
+                          id
+                          title#{' '}
+                      }
+              }
             }
           }
-        }
         GQL
       end
       let(:input_variables) do

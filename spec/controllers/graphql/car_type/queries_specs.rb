@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe GraphqlController, type: :controller do
   let(:user) { create(:user, role: :car_owner) }
   let(:car) { create(:car, user: user) }
-  
+
   before { sign_in user }
 
   describe '#cars' do

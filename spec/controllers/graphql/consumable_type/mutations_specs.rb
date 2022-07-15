@@ -12,32 +12,32 @@ RSpec.describe GraphqlController, type: :controller do
 
     include_examples 'mutation return response' do
       let(:mutation_resolver) { 'consumableCreate' }
-      let(:description) { 'create consumable' }      
+      let(:description) { 'create consumable' }
       let(:mutation) do
         <<~GQL
-        mutation ConsumableCreate($consumableInput:ConsumableCreateInput!) {
-          consumableCreate(input:$consumableInput) {
-            consumable {
-              id
-              name
-              car {
+          mutation ConsumableCreate($consumableInput:ConsumableCreateInput!) {
+            consumableCreate(input:$consumableInput) {
+              consumable {
                 id
-                maker
+                name
+                car {
+                  id
+                  maker
+                }
+                value
               }
-              value
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
         {
           "consumableInput": {
-                "consumableInput": {
-                "consumableCategoryId": consumable_category.id,
-                "carId": car.id,
-                "value": 100
-                }
+            "consumableInput": {
+              "consumableCategoryId": consumable_category.id,
+              "carId": car.id,
+              "value": 100
+            }
           }
         }
       end
@@ -50,30 +50,30 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'update consumable' }
       let(:mutation) do
         <<~GQL
-        mutation ConsumableUpdate($consumableInput:ConsumableUpdateInput!) {
-          consumableUpdate(input:$consumableInput) {
-            consumable {
-              id
-              name
-              car {
+          mutation ConsumableUpdate($consumableInput:ConsumableUpdateInput!) {
+            consumableUpdate(input:$consumableInput) {
+              consumable {
                 id
-                maker
+                name
+                car {
+                  id
+                  maker
+                }
+                value
               }
-              value
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
         {
           "consumableInput": {
-                "id": car.consumables.first.id,
-                "consumableInput": {
-                "consumableCategoryId": consumable_category.id,
-                "carId": car.id,
-                "value": 123
-                }
+            "id": car.consumables.first.id,
+            "consumableInput": {
+              "consumableCategoryId": consumable_category.id,
+              "carId": car.id,
+              "value": 123
+            }
           }
         }
       end
@@ -86,19 +86,19 @@ RSpec.describe GraphqlController, type: :controller do
       let(:description) { 'delete consumable' }
       let(:mutation) do
         <<~GQL
-        mutation ConsumableDelete($consumableInput:ConsumableDeleteInput!) {
-          consumableDelete(input:$consumableInput) {
-            consumable {
-              id
-              name
-              car {
+          mutation ConsumableDelete($consumableInput:ConsumableDeleteInput!) {
+            consumableDelete(input:$consumableInput) {
+              consumable {
                 id
-                maker
+                name
+                car {
+                  id
+                  maker
+                }
+                value
               }
-              value
             }
           }
-        }
         GQL
       end
       let(:input_variables) do
