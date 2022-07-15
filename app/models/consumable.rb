@@ -12,8 +12,8 @@
 #  updated_at    :datetime         not null
 #
 class Consumable < ApplicationRecord
-  belongs_to :car, dependent: :destroy
-  belongs_to :consumable_category, dependent: :destroy
+  belongs_to :car
+  belongs_to :consumable_category
 
   delegate :name, to: :consumable_category
 
