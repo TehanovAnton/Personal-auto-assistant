@@ -5,7 +5,9 @@ FactoryBot.define do
     name {}
     email { Faker::Internet.safe_email }
     phone_number { Faker::PhoneNumber.cell_phone }
-    address { "#{Faker::Address.city}, #{Faker::Address.street_name}, #{Faker::Address.building_number}" }
+    address do
+      "#{Faker::Address.city}, #{Faker::Address.street_name}, #{Faker::Address.building_number}"
+    end
     service_owner_id { service_owner.id }
 
     factory :organization_with_service_and_work do

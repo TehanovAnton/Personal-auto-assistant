@@ -11,7 +11,8 @@ class ServiceWork
   def initialize(service, work)
     @service = service
     @work = work
-    @organization_work = OrganizationsWork.find_by(organization_id: @service.organization.id, work_id: @work.id)
+    @organization_work = OrganizationsWork.find_by(organization_id: @service.organization.id,
+                                                   work_id: @work.id)
     @price = @organization_work.price
   end
 

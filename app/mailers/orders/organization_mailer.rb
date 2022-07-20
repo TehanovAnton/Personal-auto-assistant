@@ -7,7 +7,8 @@ module Orders
       @client = params[:client]
       @order = params[:order]
       @url = order_url(@order)
-      mail(to: @organization.email, subject: "New Order Notification | #{@order.service.name} | PersonalAutoAssistant")
+      mail(to: @organization.email,
+           subject: "New Order Notification | #{@order.service.name} | PersonalAutoAssistant")
     end
   end
 end

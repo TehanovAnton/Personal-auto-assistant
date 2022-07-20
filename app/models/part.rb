@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Part < ApplicationRecord
-  has_many :car_parts, dependent: :destroy
+  has_many :cars_part, dependent: :destroy
   has_many :cars, through: :car_parts
 
   enum name: { engine: 0,  motor: 1, brakes: 2 }

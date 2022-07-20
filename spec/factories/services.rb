@@ -6,7 +6,9 @@ FactoryBot.define do
     name { 'Best service' }
     email { Faker::Internet.safe_email }
     phone_number { Faker::PhoneNumber.cell_phone }
-    address { "#{Faker::Address.city}, #{Faker::Address.street_name}, #{Faker::Address.building_number}" }
+    address do
+      "#{Faker::Address.city}, #{Faker::Address.street_name}, #{Faker::Address.building_number}"
+    end
   end
 end
 

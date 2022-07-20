@@ -27,3 +27,12 @@ RSpec.shared_examples 'graphql query result should to be' do |result_scope|
     expect(result['data'][result_scope]).to be
   end
 end
+
+RSpec.shared_examples 'mutation return response' do
+  it description do
+    result = PersonalAutoAssitatntSchema.execute(mutation,
+                                                 variables: input_variables)
+
+    expect(result['data'][mutation_resolver]).not_to be_empty
+  end
+end

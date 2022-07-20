@@ -42,7 +42,9 @@ class Service < ApplicationRecord
   end
 
   def organization_service_works(organization_id:)
-    scope = organizations_services_works_prices.where(organization_id: organization_id).map(&:service_work_id)
+    scope = organizations_services_works_prices
+            .where(organization_id: organization_id)
+            .map(&:service_work_id)
     ServiceWork.find(scope)
   end
 
