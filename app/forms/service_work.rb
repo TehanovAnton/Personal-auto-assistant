@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+
+
 class ServiceWork
   include ActiveModel::Model
 
